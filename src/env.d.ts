@@ -1,3 +1,5 @@
 declare namespace Express {
-	export interface Request {}
+	export interface Request {
+		rawBody: string;
+	}
 }
