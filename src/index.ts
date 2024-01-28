@@ -374,6 +374,47 @@ app.post("/RST2.srf", async (req, res) => {
 	}
 });
 
+app.post("/abservice/SharingService.asmx", (req, res) => {
+	return res.status(200).send(`<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<soap:Header>
+		<ServiceHeader xmlns="http://www.msn.com/webservices/AddressBook">
+			<Version>15.01.1408.0000</Version>
+			<CacheKey>12r1:Kh9WXRRJnv6bzmHEGHOrkH_TDexZwHKoMWn69d11kMTD97my3CT8Tm2aZ62DN17zT48cuYsyavC7GnlQrno2G8Py4iVHHeXilpIvqu2zp0Z4f9XRBsBSh23VTIf3Lsg4uCDU-fI718pxpL9suj9mnE5B1Rmdx-8BL9Aj_iigpoeRxwNPhYdCVvHumCPsmK2CFa8GuDV_ST794PxWS1i3sywhUZeh774F_BmoGg</CacheKey>
+			<CacheKeyChanged>true</CacheKeyChanged>
+			<PreferredHostName>m1.escargot.chat</PreferredHostName>
+			<SessionId>24ff6f9a-ecbf-4777-a774-1c4302bc94a4</SessionId>
+		</ServiceHeader>
+	</soap:Header>
+	<soap:Body>
+		<AddMemberResponse xmlns="http://www.msn.com/webservices/AddressBook" />
+	</soap:Body>
+</soap:Envelope>
+	`);
+});
+
+app.post("/abservice/abservice.asmx", (req, res) => {
+	return res.status(200).send(`<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<soap:Body>
+		<soap:Fault>
+			<faultcode>soap:Client</faultcode>
+			<faultstring>Full sync required.  Details: Delta syncs disabled.</faultstring>
+			<faultactor>http://www.msn.com/webservices/AddressBook/ABFindContactsPaged</faultactor>
+			<detail>
+				<errorcode xmlns="http://www.msn.com/webservices/AddressBook">FullSyncRequired</errorcode>
+				<errorstring xmlns="http://www.msn.com/webservices/AddressBook">Full sync required.  Details: Delta syncs disabled.</errorstring>
+				<machineName xmlns="http://www.msn.com/webservices/AddressBook">DM2CDP1012622</machineName>
+				<additionalDetails>
+					<originalExceptionErrorMessage>Full sync required.  Details: Delta syncs disabled.</originalExceptionErrorMessage>
+				</additionalDetails>
+			</detail>
+		</soap:Fault>
+	</soap:Body>
+</soap:Envelope>
+	`);
+});
+
 const options = {
 	key: fs.readFileSync("./src/certs/localhost.key"),
 	cert: fs.readFileSync("./src/certs/localhost.crt"),
