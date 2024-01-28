@@ -10,6 +10,7 @@ export const commandMap = {
 };
 
 export const logs = {
+	webServices: `${colors.magenta("Web Services")}`,
 	send: `${colors.green(">>>")}`,
 	warning: `${colors.yellow("⚠  Warning ")}`,
 	receive: `${colors.red("<<<")}`,

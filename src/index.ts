@@ -1,11 +1,18 @@
-import express, { Request } from "express";
+import express, { Request, Response } from "express";
 import https from "https";
 import fs from "fs";
 import { XMLParser } from "fast-xml-parser";
 import { RST2Parser, Rst2 } from "./types/REST";
-import { getSortaISODate } from "./util";
+import {
+	MSNUtils,
+	encodeJWT,
+	getSortaISODate,
+	sleep,
+	sockets,
+	verifyAndDecodeJWT,
+} from "./util";
 import colors from "chalk";
-import net from "net";
+import net, { Socket } from "net";
 import { version } from "../package.json";
 import {
 	Command,
@@ -16,7 +23,11 @@ import {
 	UsrState,
 } from "./types/Command";
 import { logs, commandMap } from "./constants";
-import { v4 } from "uuid";
+import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
+import { ABServiceParser } from "./types/ABService";
+
+dotenv.config();
 
 console.log(
 	colors.green(
@@ -70,6 +81,8 @@ const parser = new XMLParser();
 
 app.set("etag", false);
 
+app.use(cookieParser());
+
 app.use((req, res, next) => {
 	// parse the body of the request
 	let body = "";
@@ -94,8 +107,8 @@ app.post("/RST2.srf", async (req, res) => {
 		colors.italic(colors.blueBright("(lets just pretend this is real)"))
 	);
 	if (
-		!body.username.endsWith("@hotmail.com") ||
-		body.password !== "password"
+		false
+		// || body.password !== "password"
 	) {
 		return res.status(200).send(`<?xml version="1.0" encoding="utf-8" ?>
 <S:Envelope xmlns:S="http://www.w3.org/2003/05/soap-envelope" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wst="http://schemas.xmlsoap.org/ws/2005/02/trust" xmlns:psf="http://schemas.microsoft.com/Passport/SoapServices/SOAPFault">
@@ -133,6 +146,23 @@ app.post("/RST2.srf", async (req, res) => {
 	</S:Body>
 </S:Envelope>`);
 	} else {
+		// we're in.
+		function waitForSocket(passport: string) {
+			return new Promise<Socket | undefined>(async (resolve) => {
+				setTimeout(() => resolve(undefined), 10000); // check for a maximum of 100 times
+				while (!MSNUtils.getSocketByPassport(passport)) {
+					await sleep(100); // hacky but it works
+				}
+				resolve(MSNUtils.getSocketByPassport(passport));
+			});
+		}
+		const socket = await waitForSocket(body.username);
+		if (!socket) return res.sendStatus(500);
+		log(logs.RST2, "Socket was successfully found.");
+		const ticket = await encodeJWT({
+			passport: body.username,
+		});
+		socket.ticket = ticket;
 		return res.status(200).send(`
 <?xml version="1.0" encoding="utf-8" ?>
 <S:Envelope xmlns:S="http://www.w3.org/2003/05/soap-envelope" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsa="http://www.w3.org/2005/08/addressing">
@@ -141,8 +171,8 @@ app.post("/RST2.srf", async (req, res) => {
 		<wsa:To xmlns:S="http://www.w3.org/2003/05/soap-envelope" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="To" S:mustUnderstand="1">http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</wsa:To>
 		<wsse:Security S:mustUnderstand="1">
 			<wsu:Timestamp xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="TS">
-				<wsu:Created>2024-01-28T04:05:39Z</wsu:Created>
-				<wsu:Expires>2024-01-28T04:10:39Z</wsu:Expires>
+				<wsu:Created>${getSortaISODate()}</wsu:Created>
+				<wsu:Expires>${getSortaISODate()}</wsu:Expires>
 			</wsu:Timestamp>
 		</wsse:Security>
 		<psf:pp xmlns:psf="http://schemas.microsoft.com/Passport/SoapServices/SOAPFault">
@@ -154,7 +184,7 @@ app.post("/RST2.srf", async (req, res) => {
 			<psf:appDataVersion>1</psf:appDataVersion>
 			<psf:authstate>0x48803</psf:authstate>
 			<psf:reqstatus>0x0</psf:reqstatus>
-			<psf:serverInfo Path="Live1" RollingUpgradeState="ExclusiveNew" LocVersion="0" ServerTime="2024-01-28T04:05:39Z">XYZPPLOGN1A23 2017.09.28.12.44.07</psf:serverInfo>
+			<psf:serverInfo Path="Live1" RollingUpgradeState="ExclusiveNew" LocVersion="0" ServerTime="${getSortaISODate()}">XYZPPLOGN1A23 2017.09.28.12.44.07</psf:serverInfo>
 			<psf:cookies/>
 			<psf:browserCookies>
 				<psf:browserCookie Name="MH" URL="http://www.msn.com">MSFT; path=/; domain=.msn.com; expires=Wed, 30-Dec-2037 16:00:00 GMT</psf:browserCookie>
@@ -167,7 +197,7 @@ app.post("/RST2.srf", async (req, res) => {
 				<psf:credProperty Name="BrandIDList"></psf:credProperty>
 				<psf:credProperty Name="IsWinLiveUser">true</psf:credProperty>
 				<psf:credProperty Name="CID">b2648d8befac2421</psf:credProperty>
-				<psf:credProperty Name="AuthMembername">nullptr@escargot.chat</psf:credProperty>
+				<psf:credProperty Name="AuthMembername">test@hotmail.com</psf:credProperty>
 				<psf:credProperty Name="Country">US</psf:credProperty>
 				<psf:credProperty Name="Language">1033</psf:credProperty>
 				<psf:credProperty Name="FirstName">John</psf:credProperty>
@@ -198,8 +228,8 @@ app.post("/RST2.srf", async (req, res) => {
 					</wsa:EndpointReference>
 				</wsp:AppliesTo>
 				<wst:Lifetime>
-					<wsu:Created>2024-01-28T04:05:39Z</wsu:Created>
-					<wsu:Expires>2024-01-29T04:05:39Z</wsu:Expires>
+					<wsu:Created>${getSortaISODate()}</wsu:Created>
+					<wsu:Expires>${getSortaISODate()}</wsu:Expires>
 				</wst:Lifetime>
 				<wst:RequestedSecurityToken>
 					<EncryptedData xmlns="http://www.w3.org/2001/04/xmlenc#" Id="BinaryDAToken0" Type="http://www.w3.org/2001/04/xmlenc#Element">
@@ -238,7 +268,7 @@ app.post("/RST2.srf", async (req, res) => {
 					<wsu:Expires>2024-01-29T04:05:39Z</wsu:Expires>
 				</wst:Lifetime>
 				<wst:RequestedSecurityToken>
-					<wsse:BinarySecurityToken Id="Compact2">t=3b2b2f6308d77e183d65Y6+H31sTUOFkqjNTDYqAAFLr5Ote7BMrMnUIzpg860jh084QMgs5djRQLLQP0TVOFkKdWDwAJdEWcfsI9YL8otN9kSfhTaPHR1njHmG0H98O2NE/Ck6zrog3UJFmYlCnHidZk1g3AzUNVXmjZoyMSyVvoHLjQSzoGRpgHg3hHdi7zrFhcYKWD8XeNYdoz9wfA2YAAAgZIgF9kFvsy2AC0Fl/ezc/fSo6YgB9TwmXyoK0wm0F9nz5EfhHQLu2xxgsvMOiXUSFSpN1cZaNzEk/KGVa3Z33Mcu0qJqvXoLyv2VjQyI0VLH6YlW5E+GMwWcQurXB9hT/DnddM5Ggzk3nX8uMSV4kV+AgF1EWpiCdLViRI6DmwwYDtUJU6W6wQXsfyTm6CNMv0eE0wFXmZvoKaL24fggkp99dX+m1vgMQJ39JblVH9cmnnkBQcKkV8lnQJ003fd6iIFzGpgPBW5Z3T1Bp7uzSGMWnHmrEw8eOpKC5ny4x8uoViXDmA2UId23xYSoJ/GQrMjqB+NslqnuVsOBE1oWpNrmfSKhGU1X0kR4Eves56t5i5n3XU+7ne0MkcUzlrMi89n2j8aouf0zeuD7o+ngqvfRCsOqjaU71XWtuD4ogu2X7/Ajtwkxg/UJDFGAnCxFTTd4dqrrEpKyMK8eWBMaartFxwwrH39HMpx1T9JgknJ1hFWELzG8b302sKy64nCseOTGaZrdH63pjGkT7vzyIxVH/b+yJwDRmy/PlLz7fmUj6zpTBNmCtl1EGFOEFdtI2R04EprIkLXbtpoIPA7m0TPZURpnWufCSsDtD91ChxR8j/FnQ/gOOyKg/EJrTcHvM1e50PMRmoRZGlltBRRwBV+ArPO64On6zygr5zud5o/aADF1laBjkuYkjvUVsXwgnaIKbTLN2+sr/WjogxT1Yins79jPa1+3dDenxZtE/rHA/6qsdJmo5BJZqNYQUFrnpkU428LryMnBaNp2BW51JRsWXPAA7yCi0wDlHzEDxpqaOnhI4Ol87ra+VAg==&amp;p=</wsse:BinarySecurityToken>
+					<wsse:BinarySecurityToken Id="Compact2">${ticket}</wsse:BinarySecurityToken>
 				</wst:RequestedSecurityToken>
 				<wst:RequestedAttachedReference>
 					<wsse:SecurityTokenReference>
@@ -263,7 +293,7 @@ app.post("/RST2.srf", async (req, res) => {
 					<wsu:Expires>2024-01-29T04:05:39Z</wsu:Expires>
 				</wst:Lifetime>
 				<wst:RequestedSecurityToken>
-					<wsse:BinarySecurityToken Id="Compact3">t=3b2b2f6308d77e183d65Y6+H31sTUOFkqjNTDYqAAFLr5Ote7BMrMnUIzpg860jh084QMgs5djRQLLQP0TVOFkKdWDwAJdEWcfsI9YL8otN9kSfhTaPHR1njHmG0H98O2NE/Ck6zrog3UJFmYlCnHidZk1g3AzUNVXmjZoyMSyVvoHLjQSzoGRpgHg3hHdi7zrFhcYKWD8XeNYdoz9wfA2YAAAgZIgF9kFvsy2AC0Fl/ezc/fSo6YgB9TwmXyoK0wm0F9nz5EfhHQLu2xxgsvMOiXUSFSpN1cZaNzEk/KGVa3Z33Mcu0qJqvXoLyv2VjQyI0VLH6YlW5E+GMwWcQurXB9hT/DnddM5Ggzk3nX8uMSV4kV+AgF1EWpiCdLViRI6DmwwYDtUJU6W6wQXsfyTm6CNMv0eE0wFXmZvoKaL24fggkp99dX+m1vgMQJ39JblVH9cmnnkBQcKkV8lnQJ003fd6iIFzGpgPBW5Z3T1Bp7uzSGMWnHmrEw8eOpKC5ny4x8uoViXDmA2UId23xYSoJ/GQrMjqB+NslqnuVsOBE1oWpNrmfSKhGU1X0kR4Eves56t5i5n3XU+7ne0MkcUzlrMi89n2j8aouf0zeuD7o+ngqvfRCsOqjaU71XWtuD4ogu2X7/Ajtwkxg/UJDFGAnCxFTTd4dqrrEpKyMK8eWBMaartFxwwrH39HMpx1T9JgknJ1hFWELzG8b302sKy64nCseOTGaZrdH63pjGkT7vzyIxVH/b+yJwDRmy/PlLz7fmUj6zpTBNmCtl1EGFOEFdtI2R04EprIkLXbtpoIPA7m0TPZURpnWufCSsDtD91ChxR8j/FnQ/gOOyKg/EJrTcHvM1e50PMRmoRZGlltBRRwBV+ArPO64On6zygr5zud5o/aADF1laBjkuYkjvUVsXwgnaIKbTLN2+sr/WjogxT1Yins79jPa1+3dDenxZtE/rHA/6qsdJmo5BJZqNYQUFrnpkU428LryMnBaNp2BW51JRsWXPAA7yCi0wDlHzEDxpqaOnhI4Ol87ra+VAg==&amp;p=</wsse:BinarySecurityToken>
+					<wsse:BinarySecurityToken Id="Compact3">${ticket}</wsse:BinarySecurityToken>
 				</wst:RequestedSecurityToken>
 				<wst:RequestedAttachedReference>
 					<wsse:SecurityTokenReference>
@@ -286,7 +316,7 @@ app.post("/RST2.srf", async (req, res) => {
 					<wsu:Expires>2024-01-29T04:05:39Z</wsu:Expires>
 				</wst:Lifetime>
 				<wst:RequestedSecurityToken>
-					<wsse:BinarySecurityToken Id="Compact4">t=3b2b2f6308d77e183d65Y6+H31sTUOFkqjNTDYqAAFLr5Ote7BMrMnUIzpg860jh084QMgs5djRQLLQP0TVOFkKdWDwAJdEWcfsI9YL8otN9kSfhTaPHR1njHmG0H98O2NE/Ck6zrog3UJFmYlCnHidZk1g3AzUNVXmjZoyMSyVvoHLjQSzoGRpgHg3hHdi7zrFhcYKWD8XeNYdoz9wfA2YAAAgZIgF9kFvsy2AC0Fl/ezc/fSo6YgB9TwmXyoK0wm0F9nz5EfhHQLu2xxgsvMOiXUSFSpN1cZaNzEk/KGVa3Z33Mcu0qJqvXoLyv2VjQyI0VLH6YlW5E+GMwWcQurXB9hT/DnddM5Ggzk3nX8uMSV4kV+AgF1EWpiCdLViRI6DmwwYDtUJU6W6wQXsfyTm6CNMv0eE0wFXmZvoKaL24fggkp99dX+m1vgMQJ39JblVH9cmnnkBQcKkV8lnQJ003fd6iIFzGpgPBW5Z3T1Bp7uzSGMWnHmrEw8eOpKC5ny4x8uoViXDmA2UId23xYSoJ/GQrMjqB+NslqnuVsOBE1oWpNrmfSKhGU1X0kR4Eves56t5i5n3XU+7ne0MkcUzlrMi89n2j8aouf0zeuD7o+ngqvfRCsOqjaU71XWtuD4ogu2X7/Ajtwkxg/UJDFGAnCxFTTd4dqrrEpKyMK8eWBMaartFxwwrH39HMpx1T9JgknJ1hFWELzG8b302sKy64nCseOTGaZrdH63pjGkT7vzyIxVH/b+yJwDRmy/PlLz7fmUj6zpTBNmCtl1EGFOEFdtI2R04EprIkLXbtpoIPA7m0TPZURpnWufCSsDtD91ChxR8j/FnQ/gOOyKg/EJrTcHvM1e50PMRmoRZGlltBRRwBV+ArPO64On6zygr5zud5o/aADF1laBjkuYkjvUVsXwgnaIKbTLN2+sr/WjogxT1Yins79jPa1+3dDenxZtE/rHA/6qsdJmo5BJZqNYQUFrnpkU428LryMnBaNp2BW51JRsWXPAA7yCi0wDlHzEDxpqaOnhI4Ol87ra+VAg==&amp;p=</wsse:BinarySecurityToken>
+					<wsse:BinarySecurityToken Id="Compact4">${ticket}</wsse:BinarySecurityToken>
 				</wst:RequestedSecurityToken>
 				<wst:RequestedAttachedReference>
 					<wsse:SecurityTokenReference>
@@ -309,7 +339,7 @@ app.post("/RST2.srf", async (req, res) => {
 					<wsu:Expires>2024-01-29T04:05:39Z</wsu:Expires>
 				</wst:Lifetime>
 				<wst:RequestedSecurityToken>
-					<wsse:BinarySecurityToken Id="Compact5">t=3b2b2f6308d77e183d65Y6+H31sTUOFkqjNTDYqAAFLr5Ote7BMrMnUIzpg860jh084QMgs5djRQLLQP0TVOFkKdWDwAJdEWcfsI9YL8otN9kSfhTaPHR1njHmG0H98O2NE/Ck6zrog3UJFmYlCnHidZk1g3AzUNVXmjZoyMSyVvoHLjQSzoGRpgHg3hHdi7zrFhcYKWD8XeNYdoz9wfA2YAAAgZIgF9kFvsy2AC0Fl/ezc/fSo6YgB9TwmXyoK0wm0F9nz5EfhHQLu2xxgsvMOiXUSFSpN1cZaNzEk/KGVa3Z33Mcu0qJqvXoLyv2VjQyI0VLH6YlW5E+GMwWcQurXB9hT/DnddM5Ggzk3nX8uMSV4kV+AgF1EWpiCdLViRI6DmwwYDtUJU6W6wQXsfyTm6CNMv0eE0wFXmZvoKaL24fggkp99dX+m1vgMQJ39JblVH9cmnnkBQcKkV8lnQJ003fd6iIFzGpgPBW5Z3T1Bp7uzSGMWnHmrEw8eOpKC5ny4x8uoViXDmA2UId23xYSoJ/GQrMjqB+NslqnuVsOBE1oWpNrmfSKhGU1X0kR4Eves56t5i5n3XU+7ne0MkcUzlrMi89n2j8aouf0zeuD7o+ngqvfRCsOqjaU71XWtuD4ogu2X7/Ajtwkxg/UJDFGAnCxFTTd4dqrrEpKyMK8eWBMaartFxwwrH39HMpx1T9JgknJ1hFWELzG8b302sKy64nCseOTGaZrdH63pjGkT7vzyIxVH/b+yJwDRmy/PlLz7fmUj6zpTBNmCtl1EGFOEFdtI2R04EprIkLXbtpoIPA7m0TPZURpnWufCSsDtD91ChxR8j/FnQ/gOOyKg/EJrTcHvM1e50PMRmoRZGlltBRRwBV+ArPO64On6zygr5zud5o/aADF1laBjkuYkjvUVsXwgnaIKbTLN2+sr/WjogxT1Yins79jPa1+3dDenxZtE/rHA/6qsdJmo5BJZqNYQUFrnpkU428LryMnBaNp2BW51JRsWXPAA7yCi0wDlHzEDxpqaOnhI4Ol87ra+VAg==&amp;p=</wsse:BinarySecurityToken>
+					<wsse:BinarySecurityToken Id="Compact5">${ticket}</wsse:BinarySecurityToken>
 				</wst:RequestedSecurityToken>
 				<wst:RequestedAttachedReference>
 					<wsse:SecurityTokenReference>
@@ -332,7 +362,7 @@ app.post("/RST2.srf", async (req, res) => {
 					<wsu:Expires>2024-01-29T04:05:39Z</wsu:Expires>
 				</wst:Lifetime>
 				<wst:RequestedSecurityToken>
-					<wsse:BinarySecurityToken Id="Compact6">t=3b2b2f6308d77e183d65Y6+H31sTUOFkqjNTDYqAAFLr5Ote7BMrMnUIzpg860jh084QMgs5djRQLLQP0TVOFkKdWDwAJdEWcfsI9YL8otN9kSfhTaPHR1njHmG0H98O2NE/Ck6zrog3UJFmYlCnHidZk1g3AzUNVXmjZoyMSyVvoHLjQSzoGRpgHg3hHdi7zrFhcYKWD8XeNYdoz9wfA2YAAAgZIgF9kFvsy2AC0Fl/ezc/fSo6YgB9TwmXyoK0wm0F9nz5EfhHQLu2xxgsvMOiXUSFSpN1cZaNzEk/KGVa3Z33Mcu0qJqvXoLyv2VjQyI0VLH6YlW5E+GMwWcQurXB9hT/DnddM5Ggzk3nX8uMSV4kV+AgF1EWpiCdLViRI6DmwwYDtUJU6W6wQXsfyTm6CNMv0eE0wFXmZvoKaL24fggkp99dX+m1vgMQJ39JblVH9cmnnkBQcKkV8lnQJ003fd6iIFzGpgPBW5Z3T1Bp7uzSGMWnHmrEw8eOpKC5ny4x8uoViXDmA2UId23xYSoJ/GQrMjqB+NslqnuVsOBE1oWpNrmfSKhGU1X0kR4Eves56t5i5n3XU+7ne0MkcUzlrMi89n2j8aouf0zeuD7o+ngqvfRCsOqjaU71XWtuD4ogu2X7/Ajtwkxg/UJDFGAnCxFTTd4dqrrEpKyMK8eWBMaartFxwwrH39HMpx1T9JgknJ1hFWELzG8b302sKy64nCseOTGaZrdH63pjGkT7vzyIxVH/b+yJwDRmy/PlLz7fmUj6zpTBNmCtl1EGFOEFdtI2R04EprIkLXbtpoIPA7m0TPZURpnWufCSsDtD91ChxR8j/FnQ/gOOyKg/EJrTcHvM1e50PMRmoRZGlltBRRwBV+ArPO64On6zygr5zud5o/aADF1laBjkuYkjvUVsXwgnaIKbTLN2+sr/WjogxT1Yins79jPa1+3dDenxZtE/rHA/6qsdJmo5BJZqNYQUFrnpkU428LryMnBaNp2BW51JRsWXPAA7yCi0wDlHzEDxpqaOnhI4Ol87ra+VAg==&amp;p=</wsse:BinarySecurityToken>
+					<wsse:BinarySecurityToken Id="Compact6">${ticket}</wsse:BinarySecurityToken>
 				</wst:RequestedSecurityToken>
 				<wst:RequestedAttachedReference>
 					<wsse:SecurityTokenReference>
@@ -355,7 +385,7 @@ app.post("/RST2.srf", async (req, res) => {
 					<wsu:Expires>2024-01-29T04:05:39Z</wsu:Expires>
 				</wst:Lifetime>
 				<wst:RequestedSecurityToken>
-					<wsse:BinarySecurityToken Id="Compact7">t=3b2b2f6308d77e183d65Y6+H31sTUOFkqjNTDYqAAFLr5Ote7BMrMnUIzpg860jh084QMgs5djRQLLQP0TVOFkKdWDwAJdEWcfsI9YL8otN9kSfhTaPHR1njHmG0H98O2NE/Ck6zrog3UJFmYlCnHidZk1g3AzUNVXmjZoyMSyVvoHLjQSzoGRpgHg3hHdi7zrFhcYKWD8XeNYdoz9wfA2YAAAgZIgF9kFvsy2AC0Fl/ezc/fSo6YgB9TwmXyoK0wm0F9nz5EfhHQLu2xxgsvMOiXUSFSpN1cZaNzEk/KGVa3Z33Mcu0qJqvXoLyv2VjQyI0VLH6YlW5E+GMwWcQurXB9hT/DnddM5Ggzk3nX8uMSV4kV+AgF1EWpiCdLViRI6DmwwYDtUJU6W6wQXsfyTm6CNMv0eE0wFXmZvoKaL24fggkp99dX+m1vgMQJ39JblVH9cmnnkBQcKkV8lnQJ003fd6iIFzGpgPBW5Z3T1Bp7uzSGMWnHmrEw8eOpKC5ny4x8uoViXDmA2UId23xYSoJ/GQrMjqB+NslqnuVsOBE1oWpNrmfSKhGU1X0kR4Eves56t5i5n3XU+7ne0MkcUzlrMi89n2j8aouf0zeuD7o+ngqvfRCsOqjaU71XWtuD4ogu2X7/Ajtwkxg/UJDFGAnCxFTTd4dqrrEpKyMK8eWBMaartFxwwrH39HMpx1T9JgknJ1hFWELzG8b302sKy64nCseOTGaZrdH63pjGkT7vzyIxVH/b+yJwDRmy/PlLz7fmUj6zpTBNmCtl1EGFOEFdtI2R04EprIkLXbtpoIPA7m0TPZURpnWufCSsDtD91ChxR8j/FnQ/gOOyKg/EJrTcHvM1e50PMRmoRZGlltBRRwBV+ArPO64On6zygr5zud5o/aADF1laBjkuYkjvUVsXwgnaIKbTLN2+sr/WjogxT1Yins79jPa1+3dDenxZtE/rHA/6qsdJmo5BJZqNYQUFrnpkU428LryMnBaNp2BW51JRsWXPAA7yCi0wDlHzEDxpqaOnhI4Ol87ra+VAg==&amp;p=</wsse:BinarySecurityToken>
+					<wsse:BinarySecurityToken Id="Compact7">${ticket}</wsse:BinarySecurityToken>
 				</wst:RequestedSecurityToken>
 				<wst:RequestedAttachedReference>
 					<wsse:SecurityTokenReference>
@@ -372,47 +402,6 @@ app.post("/RST2.srf", async (req, res) => {
 </S:Envelope>
 		`);
 	}
-});
-
-app.post("/abservice/SharingService.asmx", (req, res) => {
-	return res.status(200).send(`<?xml version="1.0" encoding="utf-8"?>
-<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-	<soap:Header>
-		<ServiceHeader xmlns="http://www.msn.com/webservices/AddressBook">
-			<Version>15.01.1408.0000</Version>
-			<CacheKey>12r1:Kh9WXRRJnv6bzmHEGHOrkH_TDexZwHKoMWn69d11kMTD97my3CT8Tm2aZ62DN17zT48cuYsyavC7GnlQrno2G8Py4iVHHeXilpIvqu2zp0Z4f9XRBsBSh23VTIf3Lsg4uCDU-fI718pxpL9suj9mnE5B1Rmdx-8BL9Aj_iigpoeRxwNPhYdCVvHumCPsmK2CFa8GuDV_ST794PxWS1i3sywhUZeh774F_BmoGg</CacheKey>
-			<CacheKeyChanged>true</CacheKeyChanged>
-			<PreferredHostName>m1.escargot.chat</PreferredHostName>
-			<SessionId>24ff6f9a-ecbf-4777-a774-1c4302bc94a4</SessionId>
-		</ServiceHeader>
-	</soap:Header>
-	<soap:Body>
-		<AddMemberResponse xmlns="http://www.msn.com/webservices/AddressBook" />
-	</soap:Body>
-</soap:Envelope>
-	`);
-});
-
-app.post("/abservice/abservice.asmx", (req, res) => {
-	return res.status(200).send(`<?xml version="1.0" encoding="utf-8"?>
-<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-	<soap:Body>
-		<soap:Fault>
-			<faultcode>soap:Client</faultcode>
-			<faultstring>Full sync required.  Details: Delta syncs disabled.</faultstring>
-			<faultactor>http://www.msn.com/webservices/AddressBook/ABFindContactsPaged</faultactor>
-			<detail>
-				<errorcode xmlns="http://www.msn.com/webservices/AddressBook">FullSyncRequired</errorcode>
-				<errorstring xmlns="http://www.msn.com/webservices/AddressBook">Full sync required.  Details: Delta syncs disabled.</errorstring>
-				<machineName xmlns="http://www.msn.com/webservices/AddressBook">DM2CDP1012622</machineName>
-				<additionalDetails>
-					<originalExceptionErrorMessage>Full sync required.  Details: Delta syncs disabled.</originalExceptionErrorMessage>
-				</additionalDetails>
-			</detail>
-		</soap:Fault>
-	</soap:Body>
-</soap:Envelope>
-	`);
 });
 
 const options = {
@@ -492,7 +481,7 @@ function parse(message: string) {
 						trid: parseInt(trid),
 						TWN: args[0] as any,
 						state: args[1] as any,
-						t: args[2].replace("t=", "").replace("&p=", ""),
+						t: args[2],
 						p: args[3],
 						machineGuid: args[4],
 					});
@@ -525,7 +514,26 @@ function parse(message: string) {
 			};
 		})
 	);
+	const webServicesTs = fs.readdirSync("./src/webServices");
+	const webServices = await Promise.all(
+		webServicesTs.map(async (webService) => {
+			const webServiceModule = await import(
+				`./webServices/${webService}`
+			);
+			return {
+				type: webService.replace(".ts", ""),
+				fn: webServiceModule.default as (
+					req: Request,
+					res: Response
+				) => void,
+			};
+		})
+	);
 	const tcpServer = net.createServer((socket) => {
+		sockets.push(socket);
+		socket.on("close", () => {
+			sockets.splice(sockets.indexOf(socket), 1);
+		});
 		function send(data: string) {
 			console.log(logs.send, data);
 			socket.write(data + "\r\n");
@@ -570,5 +578,41 @@ function parse(message: string) {
 
 	tcpServer.listen(1863, () => {
 		log(logs.TCP, "Server running on port 1863");
+	});
+
+	app.post("/abservice/SharingService.asmx", (req, res) => {
+		const action = req.headers.soapaction as string | undefined;
+		if (!action) return res.sendStatus(500);
+		const actionName = action?.split("/").at(-1);
+		const webService = webServices.find(
+			(webService) => webService.type === actionName
+		);
+		if (!webService) {
+			log(
+				logs.warning,
+				`No web service found for ${colors.blue(actionName)}`
+			);
+			return res.sendStatus(500);
+		}
+		webService.fn(req, res);
+	});
+	app.post("/storageservice/SchematizedStore.asmx", (req, res) => {
+		return res.status(404).send();
+	});
+	app.post("/abservice/abservice.asmx", async (req, res) => {
+		const action = req.headers.soapaction as string | undefined;
+		if (!action) return res.sendStatus(500);
+		const actionName = action?.split("/").at(-1);
+		const webService = webServices.find(
+			(webService) => webService.type === actionName
+		);
+		if (!webService) {
+			log(
+				logs.warning,
+				`No web service found for ${colors.blue(actionName)}`
+			);
+			return res.sendStatus(500);
+		}
+		webService.fn(req, res);
 	});
 })();

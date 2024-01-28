@@ -11,3 +11,9 @@ declare module "net" {
 		ticket?: string;
 	}
 }
+
+namespace NodeJS {
+	export interface ProcessEnv {
+		JWT_SECRET: string;
+	}
+}
