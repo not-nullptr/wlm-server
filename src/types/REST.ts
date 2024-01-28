@@ -76,3 +76,5 @@ export class RST2Parser {
 		]["wsse:Password"];
 	}
 }
+
+export class ABServiceParser {}
