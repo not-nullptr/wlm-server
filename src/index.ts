@@ -163,8 +163,7 @@ app.post("/RST2.srf", async (req, res) => {
 			passport: body.username,
 		});
 		socket.ticket = ticket;
-		return res.status(200).send(`
-<?xml version="1.0" encoding="utf-8" ?>
+		return res.status(200).send(`<?xml version="1.0" encoding="utf-8" ?>
 <S:Envelope xmlns:S="http://www.w3.org/2003/05/soap-envelope" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsa="http://www.w3.org/2005/08/addressing">
 	<S:Header>
 		<wsa:Action xmlns:S="http://www.w3.org/2003/05/soap-envelope" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="Action" S:mustUnderstand="1">http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Issue</wsa:Action>
@@ -177,14 +176,14 @@ app.post("/RST2.srf", async (req, res) => {
 		</wsse:Security>
 		<psf:pp xmlns:psf="http://schemas.microsoft.com/Passport/SoapServices/SOAPFault">
 			<psf:serverVersion>1</psf:serverVersion>
-			<psf:PUID>AA1888D5EFAC2421</psf:PUID>
+			<psf:PUID>B67FF5EB1D95BCFB</psf:PUID>
 			<psf:configVersion>16.000.26889.00</psf:configVersion>
 			<psf:uiVersion>3.100.2179.0</psf:uiVersion>
 			<psf:mobileConfigVersion>16.000.26208.0</psf:mobileConfigVersion>
 			<psf:appDataVersion>1</psf:appDataVersion>
 			<psf:authstate>0x48803</psf:authstate>
 			<psf:reqstatus>0x0</psf:reqstatus>
-			<psf:serverInfo Path="Live1" RollingUpgradeState="ExclusiveNew" LocVersion="0" ServerTime="${getSortaISODate()}">XYZPPLOGN1A23 2017.09.28.12.44.07</psf:serverInfo>
+			<psf:serverInfo Path="Live1" RollingUpgradeState="ExclusiveNew" LocVersion="0" ServerTime="2024-02-01T19:14:15Z">XYZPPLOGN1A23 2017.09.28.12.44.07</psf:serverInfo>
 			<psf:cookies/>
 			<psf:browserCookies>
 				<psf:browserCookie Name="MH" URL="http://www.msn.com">MSFT; path=/; domain=.msn.com; expires=Wed, 30-Dec-2037 16:00:00 GMT</psf:browserCookie>
@@ -196,8 +195,8 @@ app.post("/RST2.srf", async (req, res) => {
 				<psf:credProperty Name="MainBrandID">MSFT</psf:credProperty>
 				<psf:credProperty Name="BrandIDList"></psf:credProperty>
 				<psf:credProperty Name="IsWinLiveUser">true</psf:credProperty>
-				<psf:credProperty Name="CID">b2648d8befac2421</psf:credProperty>
-				<psf:credProperty Name="AuthMembername">test@hotmail.com</psf:credProperty>
+				<psf:credProperty Name="CID">bd7ab5a41d95bcfb</psf:credProperty>
+				<psf:credProperty Name="AuthMembername">nullptralt@escargot.chat</psf:credProperty>
 				<psf:credProperty Name="Country">US</psf:credProperty>
 				<psf:credProperty Name="Language">1033</psf:credProperty>
 				<psf:credProperty Name="FirstName">John</psf:credProperty>
@@ -213,7 +212,7 @@ app.post("/RST2.srf", async (req, res) => {
 				<psf:extProperty Name="NAP" Expiry="Wed, 30-Dec-2037 16:00:00 GMT" Domains="bing.com;atdmt.com" IgnoreRememberMe="false">V=1.9&amp;E=14e8&amp;C=uT838e-8kV7Jbm-HqQel-ETkvE7QSUGh6ywMjZQ9JJyYtNKxtdfCBw&amp;W=1</psf:extProperty>
 				<psf:extProperty Name="LastUsedCredType">1</psf:extProperty>
 				<psf:extProperty Name="WebCredType">1</psf:extProperty>
-				<psf:extProperty Name="CID">b2648d8befac2421</psf:extProperty>
+				<psf:extProperty Name="CID">bd7ab5a41d95bcfb</psf:extProperty>
 			</psf:extProperties>
 			<psf:response/>
 		</psf:pp>
@@ -264,8 +263,8 @@ app.post("/RST2.srf", async (req, res) => {
 					</wsa:EndpointReference>
 				</wsp:AppliesTo>
 				<wst:Lifetime>
-					<wsu:Created>2024-01-28T04:05:39Z</wsu:Created>
-					<wsu:Expires>2024-01-29T04:05:39Z</wsu:Expires>
+					<wsu:Created>2024-02-01T19:14:15Z</wsu:Created>
+					<wsu:Expires>2024-02-02T19:14:15Z</wsu:Expires>
 				</wst:Lifetime>
 				<wst:RequestedSecurityToken>
 					<wsse:BinarySecurityToken Id="Compact2">${ticket}</wsse:BinarySecurityToken>
@@ -280,7 +279,7 @@ app.post("/RST2.srf", async (req, res) => {
 						<wsse:Reference URI="/DaESnwwMVTTpRTZEoNqUW/Md0k="></wsse:Reference>
 					</wsse:SecurityTokenReference>
 				</wst:RequestedUnattachedReference><wst:RequestedProofToken>
-					<wst:BinarySecret>FbN+nzxKzW43nsq705pFStASTNpqUpb/</wst:BinarySecret>
+					<wst:BinarySecret>EHgkVduMLr3hIGy6eUNyYdAHh+iMeGKl</wst:BinarySecret>
 				</wst:RequestedProofToken></wst:RequestSecurityTokenResponse>			<wst:RequestSecurityTokenResponse>
 				<wst:TokenType>urn:passport:compact</wst:TokenType>
 				<wsp:AppliesTo xmlns:wsa="http://www.w3.org/2005/08/addressing">
@@ -289,8 +288,8 @@ app.post("/RST2.srf", async (req, res) => {
 					</wsa:EndpointReference>
 				</wsp:AppliesTo>
 				<wst:Lifetime>
-					<wsu:Created>2024-01-28T04:05:39Z</wsu:Created>
-					<wsu:Expires>2024-01-29T04:05:39Z</wsu:Expires>
+					<wsu:Created>2024-02-01T19:14:15Z</wsu:Created>
+					<wsu:Expires>2024-02-02T19:14:15Z</wsu:Expires>
 				</wst:Lifetime>
 				<wst:RequestedSecurityToken>
 					<wsse:BinarySecurityToken Id="Compact3">${ticket}</wsse:BinarySecurityToken>
@@ -312,8 +311,8 @@ app.post("/RST2.srf", async (req, res) => {
 					</wsa:EndpointReference>
 				</wsp:AppliesTo>
 				<wst:Lifetime>
-					<wsu:Created>2024-01-28T04:05:39Z</wsu:Created>
-					<wsu:Expires>2024-01-29T04:05:39Z</wsu:Expires>
+					<wsu:Created>2024-02-01T19:14:15Z</wsu:Created>
+					<wsu:Expires>2024-02-02T19:14:15Z</wsu:Expires>
 				</wst:Lifetime>
 				<wst:RequestedSecurityToken>
 					<wsse:BinarySecurityToken Id="Compact4">${ticket}</wsse:BinarySecurityToken>
@@ -335,8 +334,8 @@ app.post("/RST2.srf", async (req, res) => {
 					</wsa:EndpointReference>
 				</wsp:AppliesTo>
 				<wst:Lifetime>
-					<wsu:Created>2024-01-28T04:05:39Z</wsu:Created>
-					<wsu:Expires>2024-01-29T04:05:39Z</wsu:Expires>
+					<wsu:Created>2024-02-01T19:14:15Z</wsu:Created>
+					<wsu:Expires>2024-02-02T19:14:15Z</wsu:Expires>
 				</wst:Lifetime>
 				<wst:RequestedSecurityToken>
 					<wsse:BinarySecurityToken Id="Compact5">${ticket}</wsse:BinarySecurityToken>
@@ -358,8 +357,8 @@ app.post("/RST2.srf", async (req, res) => {
 					</wsa:EndpointReference>
 				</wsp:AppliesTo>
 				<wst:Lifetime>
-					<wsu:Created>2024-01-28T04:05:39Z</wsu:Created>
-					<wsu:Expires>2024-01-29T04:05:39Z</wsu:Expires>
+					<wsu:Created>2024-02-01T19:14:15Z</wsu:Created>
+					<wsu:Expires>2024-02-02T19:14:15Z</wsu:Expires>
 				</wst:Lifetime>
 				<wst:RequestedSecurityToken>
 					<wsse:BinarySecurityToken Id="Compact6">${ticket}</wsse:BinarySecurityToken>
@@ -381,8 +380,8 @@ app.post("/RST2.srf", async (req, res) => {
 					</wsa:EndpointReference>
 				</wsp:AppliesTo>
 				<wst:Lifetime>
-					<wsu:Created>2024-01-28T04:05:39Z</wsu:Created>
-					<wsu:Expires>2024-01-29T04:05:39Z</wsu:Expires>
+					<wsu:Created>2024-02-01T19:14:15Z</wsu:Created>
+					<wsu:Expires>2024-02-02T19:14:15Z</wsu:Expires>
 				</wst:Lifetime>
 				<wst:RequestedSecurityToken>
 					<wsse:BinarySecurityToken Id="Compact7">${ticket}</wsse:BinarySecurityToken>
@@ -399,8 +398,7 @@ app.post("/RST2.srf", async (req, res) => {
 				</wst:RequestedUnattachedReference></wst:RequestSecurityTokenResponse>
 		</wst:RequestSecurityTokenResponseCollection>
 	</S:Body>
-</S:Envelope>
-		`);
+</S:Envelope>`);
 	}
 });
 

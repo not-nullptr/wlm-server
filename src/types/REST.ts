@@ -66,9 +66,9 @@ export class RST2Parser {
 		this.xml = xml;
 	}
 	public get username(): string {
-		return this.xml["s:Envelope"]["s:Header"]["wsse:Security"][
+		return this.xml?.["s:Envelope"]?.["s:Header"]?.["wsse:Security"]?.[
 			"wsse:UsernameToken"
-		]["wsse:Username"];
+		]?.["wsse:Username"];
 	}
 	public get password(): string {
 		return this.xml["s:Envelope"]["s:Header"]["wsse:Security"][
