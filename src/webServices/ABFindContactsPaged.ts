@@ -64,7 +64,7 @@ export default async function ABFindContactsPaged(req: Request, res: Response) {
 								</Contact><Contact>
 								<contactId>aa1888d5-0df9-4388-b264-8d8befac2421</contactId>
 	<contactInfo><contactType>Regular</contactType>
-		<quickName>nullptr</quickName><passportName>nullptr@escargot.chat</passportName>
+		<quickName>nullptr</quickName><passportName>nullptralt@escargot.chat</passportName>
 		<IsPassportNameHidden>false</IsPassportNameHidden>
 		<displayName>nullptr</displayName>
 		<puid>0</puid><CID>2388223847251666098</CID>

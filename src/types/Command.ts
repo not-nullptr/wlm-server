@@ -155,6 +155,7 @@ export enum Protocol {
 export interface BaseCommand {
 	type: Command;
 	trid?: number;
+	payload?: string;
 }
 
 export interface VerCommand extends BaseCommand {

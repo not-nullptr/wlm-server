@@ -48,28 +48,21 @@ export default async function USR(
 			}
 			// usually this would be insecure, but JWTs verify integrity so its cool
 			socket.ticket = data.t;
-			socket.write(
-				// Command.USR,
-				// UsrState.OK,
-				// socket.passport,
-				// "1",
-				// "0",
-				// "\r\nSBS 0 null"
-				`${Command.USR} ${data.trid} OK ${socket.passport} 1 0\r\nSBS 0 null\r\n`
-			);
-			socket.write(`MSG Hotmail Hotmail 1461\r\n
+			send(Command.USR, "OK", socket.passport, "1", "0");
+			socket.write(`SBS 0 null\r\n
+MSG Hotmail Hotmail 1460\r\n
 MIME-Version: 1.0\r\n
 Content-Type: text/x-msmsgsprofile; charset=UTF-8\r\n
-LoginTime: 1706458530\r\n
+LoginTime: 1706902514\r\n
 EmailEnabled: 0\r\n
-MemberIdHigh: 2853734613\r\n
-MemberIdLow: 4021036065\r\n
+MemberIdHigh: 3061839339\r\n
+MemberIdLow: 496352507\r\n
 lang_preference: 1033\r\n
 preferredEmail:\r\n
 country:\r\n
 PostalCode:\r\n
 Gender:\r\n
-Kid: 1\r\n
+Kid: 0\r\n
 Age:\r\n
 BDayPre:\r\n
 Birthday:\r\n
@@ -78,16 +71,13 @@ Flags: 536872513\r\n
 sid: 507\r\n
 MSPAuth: ${data.t}\r\n
 ClientIP: 87.254.0.131\r\n
-ClientPort: 29441\r\n
-ABCHMigrated: 1\r\n
+ClientPort: 29612\r\n
+ABCHMigrated:`);
+			setTimeout(() => {
+				socket.write(` 1\r\n
 MPOPEnabled: 1\r\n
-BetaInvites: 1\r\n\r\n`);
-			socket.write(
-				Buffer.from(
-					"434847203131204e4c4e20323738383939393231323a343820300d0a4e4c4e204e4c4e20313a6e756c6c707472616c74406573636172676f742e63686174206e756c6c707472616c74406573636172676f742e6368617420323738383939393231323a343820300d0a",
-					"hex"
-				)
-			);
+BetaInvites: 1\r\n\r\nUBX 1:${jwt.passport} 0`);
+			}, 50);
 		} catch {
 			socket.destroy();
 			log(logs.warning, "Invalid JWT, socket destroyed");

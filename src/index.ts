@@ -581,12 +581,19 @@ function parse(message: string) {
 	}
 
 	const parsedCmds: ICommand[] = [];
-	for (const command of commands) {
+	commands.forEach((command) => {
 		let [cmd, trid, ...args] = command.split(" ") as [
 			Command,
 			string,
 			...string[]
 		];
+		if (command.trim() === "") return;
+		const isCommand = /^[A-Z]{3}/.test(command);
+		if (!isCommand) {
+			// if not, append to the previous command
+			parsedCmds[parsedCmds.length - 1].payload = command;
+			return;
+		}
 		console.log(
 			logs.receive,
 			`Received command ${colors.blue(cmd)} (${colors.cyan(
@@ -620,7 +627,7 @@ function parse(message: string) {
 					break;
 				}
 			}
-			continue;
+			return;
 		}
 		switch (cmd) {
 			case Command.VER:
@@ -683,7 +690,7 @@ function parse(message: string) {
 				} as any);
 				break;
 		}
-	}
+	});
 	return parsedCmds;
 }
 
@@ -727,7 +734,7 @@ function parse(message: string) {
 			socket.write(data + "\r\n");
 		}
 		socket.on("data", (data) => {
-			console.log(colors.bgCyan(colors.black(data.toString())));
+			console.log(colors.bgBlue(colors.white(data.toString())));
 			const cmds = parse(data.toString());
 			cmds.forEach((cmd) => {
 				const handler = handlers.find(

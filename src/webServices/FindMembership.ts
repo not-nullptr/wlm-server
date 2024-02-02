@@ -30,7 +30,7 @@ export default async function FindMembership(req: Request, res: Response) {
 													<JoinedDate>2023-08-21T15:58:33Z</JoinedDate>
 													<ExpirationDate>0001-01-01T00:00:00</ExpirationDate>
 													<Changes />
-													<PassportName>nullptr@escargot.chat</PassportName>
+													<PassportName>nullptralt@escargot.chat</PassportName>
 													<IsPassportNameHidden>false</IsPassportNameHidden>
 													<PassportId>0</PassportId>
 													<CID>2388223847251666098</CID>
@@ -53,7 +53,7 @@ export default async function FindMembership(req: Request, res: Response) {
 													<JoinedDate>2023-08-21T15:58:33Z</JoinedDate>
 													<ExpirationDate>0001-01-01T00:00:00</ExpirationDate>
 													<Changes />
-													<PassportName>nullptr@escargot.chat</PassportName>
+													<PassportName>nullptralt@escargot.chat</PassportName>
 													<IsPassportNameHidden>false</IsPassportNameHidden>
 													<PassportId>0</PassportId>
 													<CID>2388223847251666098</CID>
