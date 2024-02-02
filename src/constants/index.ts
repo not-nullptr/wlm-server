@@ -7,6 +7,7 @@ export const commandMap = {
 	[Command.INF]: `Authentication List ${colors.dim("(deprecated)")}`,
 	[Command.USR]: "Authentication",
 	[Command.XFR]: "Redirect To Notification Server",
+	[Command.ADL]: "Unknown",
 };
 
 export const logs = {
@@ -18,6 +19,7 @@ export const logs = {
 	CVR: `${colors.blue("CVR")}`,
 	USR: `${colors.blue("USR")}`,
 	RST2: `${colors.blue("RST2")}`,
+	HTTP: `${colors.green("HTTP")}`,
 	HTTPS: `${colors.green("HTTPS")}`,
 	TCP: `${colors.redBright("TCP")}`,
 };

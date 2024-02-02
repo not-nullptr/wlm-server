@@ -9,7 +9,7 @@ export default async function ABFindContactsPaged(req: Request, res: Response) {
 			<Version>15.01.1408.0000</Version>
 			<CacheKey>12r1:PvYuZs8y_W3ejO4_87AYpKuS9rmo-oCI1TdZctjVjubfQemm5rRJfmT01v5w8m89quPXyOgFmG1W2sNmd6NQjw0SCFFI6DbErRlt1eg4plJJJ8skad6BvTvMNDW_ILDxirLfczxLm-NM1byYDN8U-c06xTnAjouILXXMfZgphLeZQOa-kApE09lbcucxp393gVtU0AxGK6dIRweo7xxw5TGUhbOA3VLECt1Odw</CacheKey>
 			<CacheKeyChanged>true</CacheKeyChanged>
-			<PreferredHostName>m1.escargot.chat</PreferredHostName>
+			<PreferredHostName>localhost</PreferredHostName>
 			<SessionId>15f5a0d9-3687-4d9c-8b53-3bfee7b01933</SessionId>
 		</ServiceHeader>
 	</soap:Header>

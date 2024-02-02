@@ -10,7 +10,7 @@ export default async function FindMembership(req: Request, res: Response) {
 			<Version>15.01.1408.0000</Version>
 			<CacheKey>12r1:iAX_-5cZAMYBiZtBq5iO1WhrC_HVMfx65jPtvaCVa-YcW1mZDrhDAZjbQlDMXnWqqq6fNuQ8Q8LCJbnj1LVUDEpsxtkKDOhwwXeHbXDGe4IPyR18ek-aOhH28WfUbR3vCV39yTlnNak8mf5BszNUhwqs_HsFB5Uz5Rsx10OSeLgAOD9Ct26dFjuYsHz3GCRITDCjdmmZhiH7d6YzusCBKB9h-LBiuu92ucpsPQ</CacheKey>
 			<CacheKeyChanged>true</CacheKeyChanged>
-			<PreferredHostName>m1.escargot.chat</PreferredHostName>
+			<PreferredHostName>localhost</PreferredHostName>
 			<SessionId>8bda4309-3e18-426d-9577-50f30974d79b</SessionId>
 		</ServiceHeader>
 	</soap:Header>

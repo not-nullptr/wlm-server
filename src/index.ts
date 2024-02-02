@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import https from "https";
 import fs from "fs";
 import { XMLParser } from "fast-xml-parser";
+import xml2js from "xml2js";
 import { RST2Parser, Rst2 } from "./types/REST";
 import {
 	MSNUtils,
@@ -402,6 +403,152 @@ app.post("/RST2.srf", async (req, res) => {
 	}
 });
 
+app.post("/whatsnew/whatsnewservice.asmx", (req, res) => {
+	return res.status(200).send(`<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <soap:Header>
+        <WNServiceHeader xmlns="http://www.msn.com/webservices/AddressBook">
+            <Version>15.1.1216.0</Version>
+        </WNServiceHeader>
+    </soap:Header>
+    <soap:Body>
+        <GetContactsRecentActivityResponse xmlns="http://www.msn.com/webservices/AddressBook">
+            <GetContactsRecentActivityResult>
+                <Activities>
+                    <ActivityDetails>
+                        <OwnerCID>0</OwnerCID>
+                        <ObjectId>Mon, 18 Dec 2022 10:29:51 PST</ObjectId>
+                        <ApplicationId>505</ApplicationId>
+                        <ChangeType>20</ChangeType>
+                        <PublishDate>2022-03-21T20:38:31Z</PublishDate>
+                        <TemplateVariables>
+                            <TemplateVariable xsi:type="TextTemplateVariable">
+                                <Name>Name</Name>
+                                <Value>webEscargot is now available</Value>
+                            </TemplateVariable>
+			    <TemplateVariable xsi:type="HlinkTemplateVariable">
+                                <Name>Url</Name>
+                                <Value>https://web.escargot.chat/</Value>
+			    </TemplateVariable>
+                        </TemplateVariables>
+                    </ActivityDetails>
+                    <ActivityDetails>
+                        <OwnerCID>0</OwnerCID>
+                        <ObjectId>Mon, 25 Mar 2020 10:29:51 PST</ObjectId>
+                        <ApplicationId>503</ApplicationId>
+                        <ChangeType>20</ChangeType>
+                        <PublishDate>2022-03-22T20:38:31Z</PublishDate>
+                        <TemplateVariables>
+                            <TemplateVariable xsi:type="TextTemplateVariable">
+                                <Name>Name</Name>
+                                <Value>Yahoo! Messenger 6</Value>
+                            </TemplateVariable>
+                            <TemplateVariable xsi:type="HlinkTemplateVariable">
+                                <Name>Download</Name>
+                                <Value>https://nina.chat/download/yahoo/</Value>
+                                <Text />
+                            </TemplateVariable>
+                        </TemplateVariables>
+                    </ActivityDetails>
+                     <ActivityDetails>
+                        <OwnerCID>0</OwnerCID>
+                        <ObjectId>Mon, 22 Mar 2022 10:29:51 PST</ObjectId>
+                        <ApplicationId>502</ApplicationId>
+                        <ChangeType>20</ChangeType>
+                        <PublishDate>2022-03-22T20:38:31Z</PublishDate>
+                        <TemplateVariables>
+                            <TemplateVariable xsi:type="TextTemplateVariable">
+                                <Name>Name</Name>
+                                <Value>Discord</Value>
+                            </TemplateVariable>
+                            <TemplateVariable xsi:type="HlinkTemplateVariable">
+                                <Name>Discord</Name>
+                                <Value>https://escargot.chat/discord/?src=wn</Value>
+                                <Text />
+                            </TemplateVariable>
+                        </TemplateVariables>
+                    </ActivityDetails>
+                </Activities>
+                <Templates>
+                    <RecentActivityTemplateContainer>
+                        <ApplicationId>505</ApplicationId>
+                        <ApplicationName>webEscargot</ApplicationName>
+                        <MiniIconSizeX>0</MiniIconSizeX>
+                        <MiniIconSizeY>0</MiniIconSizeY>
+                        <ChangeType>20</ChangeType>
+                        <Locale>en-us</Locale>
+                        <RequestedLocales>
+                            <string>en-US</string>
+                        </RequestedLocales>
+                        <TemplateRevision>1</TemplateRevision>
+                        <Templates>
+                            <RecentActivityTemplate>
+                                <Cardinality>One</Cardinality>
+                                <Data>{text:Name}</Data>
+                                <Title>webEscargot is now available for everyone, try it {hlink:Url="here"}!</Title>
+                            </RecentActivityTemplate>
+                        </Templates>
+                        <ActivityType>
+                            <string>blog</string>
+                        </ActivityType>
+                        <CanMergeItemsWithSameObjectID>false</CanMergeItemsWithSameObjectID>
+                    </RecentActivityTemplateContainer>
+                    <RecentActivityTemplateContainer>
+                        <ApplicationId>503</ApplicationId>
+                        <ApplicationName>Yahoo</ApplicationName>
+                        <MiniIconSizeX>0</MiniIconSizeX>
+                        <MiniIconSizeY>0</MiniIconSizeY>
+                        <ChangeType>20</ChangeType>
+                        <Locale>en-us</Locale>
+                        <RequestedLocales>
+                            <string>en-US</string>
+                        </RequestedLocales>
+                        <TemplateRevision>1</TemplateRevision>
+                        <Templates>
+                            <RecentActivityTemplate>
+                                <Cardinality>One</Cardinality>
+                                <Data>{text:Name}</Data>
+                                <Title>Yahoo! Messenger 6 is now available for everyone, get started {hlink:Download="here"}!</Title>
+                            </RecentActivityTemplate>
+                        </Templates>
+                        <ActivityType>
+                            <string>blog</string>
+                        </ActivityType>
+                        <CanMergeItemsWithSameObjectID>false</CanMergeItemsWithSameObjectID>
+                    </RecentActivityTemplateContainer>
+                    <RecentActivityTemplateContainer>
+                        <ApplicationId>502</ApplicationId>
+                        <ApplicationName>Discord</ApplicationName>
+                        <MiniIconSizeX>0</MiniIconSizeX>
+                        <MiniIconSizeY>0</MiniIconSizeY>
+                        <ChangeType>20</ChangeType>
+                        <Locale>en-us</Locale>
+                        <RequestedLocales>
+                            <string>en-US</string>
+                        </RequestedLocales>
+                        <TemplateRevision>1</TemplateRevision>
+                        <Templates>
+                            <RecentActivityTemplate>
+                                <Cardinality>One</Cardinality>
+                                <Data>{text:Name}</Data>
+                                <Title>Did you know we have a Discord server? Click {hlink:Discord="here"} to join us!</Title>
+                            </RecentActivityTemplate>
+                        </Templates>
+                        <ActivityType>
+                            <string>blog</string>
+                        </ActivityType>
+                        <CanMergeItemsWithSameObjectID>false</CanMergeItemsWithSameObjectID>
+                    </RecentActivityTemplateContainer>
+                </Templates>
+                <FeedUrl>http://escargot.chat/news</FeedUrl>
+            </GetContactsRecentActivityResult>
+        </GetContactsRecentActivityResponse>
+    </soap:Body>
+</soap:Envelope>`);
+});
+
 const options = {
 	key: fs.readFileSync("./src/certs/localhost.key"),
 	cert: fs.readFileSync("./src/certs/localhost.crt"),
@@ -409,8 +556,14 @@ const options = {
 
 const httpsServer = https.createServer(options, app);
 
+const httpServer = app;
+
 httpsServer.listen(443, () => {
 	log(logs.HTTPS, "Server running on port 443");
+});
+
+httpServer.listen(80, () => {
+	log(logs.HTTP, "Server running on port 80");
 });
 
 function parse(message: string) {
@@ -423,6 +576,8 @@ function parse(message: string) {
 		}
 
 		commands.push(...lines);
+	} else {
+		commands.push(message);
 	}
 
 	const parsedCmds: ICommand[] = [];
@@ -442,6 +597,31 @@ function parse(message: string) {
 					: colors.dim(colors.italic("none"))
 			})`
 		);
+		// if the command has data after the first \r\n:
+		if (command.includes("\r\n") && command.split("\r\n").length > 1) {
+			const data = command.split("\r\n").slice(1).join("\r\n");
+			switch (cmd) {
+				case Command.ADL: {
+					// const matches = data.match(/n="([^"]*)"/gm);
+					// const [domain, emailBeginning, displayName] = matches?.map(
+					// 	(match) => match.split('"')[1]
+					// )!;
+					// if (!domain || !emailBeginning || !displayName) {
+					// 	console.log(logs.warning, "Invalid ADL command");
+					// 	break;
+					// }
+					parsedCmds.push({
+						type: cmd,
+						trid: parseInt(trid),
+						// domain,
+						// emailBeginning,
+						// displayName,
+					});
+					break;
+				}
+			}
+			continue;
+		}
 		switch (cmd) {
 			case Command.VER:
 				parsedCmds.push({
@@ -474,6 +654,16 @@ function parse(message: string) {
 						passport: args[2],
 					});
 				} else if (args[1] === UsrState.Subsequent) {
+					parsedCmds.push({
+						type: cmd,
+						trid: parseInt(trid),
+						TWN: args[0] as any,
+						state: args[1] as any,
+						t: args[2],
+						p: args[3],
+						machineGuid: args[4],
+					});
+				} else {
 					parsedCmds.push({
 						type: cmd,
 						trid: parseInt(trid),
@@ -537,6 +727,7 @@ function parse(message: string) {
 			socket.write(data + "\r\n");
 		}
 		socket.on("data", (data) => {
+			console.log(colors.bgCyan(colors.black(data.toString())));
 			const cmds = parse(data.toString());
 			cmds.forEach((cmd) => {
 				const handler = handlers.find(

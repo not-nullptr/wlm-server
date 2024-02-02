@@ -138,6 +138,7 @@ export enum Locale {
 }
 
 export enum Command {
+	ADL = "ADL",
 	VER = "VER",
 	CVR = "CVR",
 	INF = "INF",
@@ -228,7 +229,15 @@ export interface UsrCommand extends BaseCommand {
 	machineGuid?: string;
 }
 
-export type ICommand = VerCommand | CvrCommand | UsrCommand;
+export interface ADLCommand extends BaseCommand {
+	type: Command.ADL;
+}
+// 	domain: string;
+// 	emailBeginning: string;
+// 	displayName: string;
+// }
+
+export type ICommand = VerCommand | CvrCommand | UsrCommand | ADLCommand;
 
 export type SendFunction = (command: Command, ...args: string[]) => void;
 
