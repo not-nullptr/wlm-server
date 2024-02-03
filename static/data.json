@@ -14,24 +14,47 @@
 			]
 		}
 	],
-	"videos": [
-		{
-			"guid": "podcast",
-			"title": "WE HAVE A PODCAST",
-			"description": "HEY FUCKFACE!! Wanna hear a loser talk about a niche messenger from 12 years ago? No? Well fuck you!",
-			"link": "https://aerochat.live",
-			"pubDate": "2024-02-03T21:30:33+00:00",
-			"enclosure": {
-				"url": "http://127.1.1.1:3000/thumb.png",
-				"type": "image/jpeg",
-				"length": 1
-			}
-		}
-	],
+	"videos": [],
 	"textads": [
 		{
-			"text": "FREE MY BOY RAINO HE AINT DO NUN WRONG",
-			"link": "https://aerochat.live/"
+			"text": "FREE MY BOY RAINO HE AINT DO NUN WRONG #FREERAINO",
+			"link": "about:blank"
+		},
+		{
+			"text": "so you're telling me a shrimp fried this rice?",
+			"link": "about:blank"
+		},
+		{
+			"text": "i joke but i have some serious respect for the escargot team. go donate to them",
+			"link": "https://escargot.chat/donate"
+		},
+		{
+			"text": "now with no added sugar!",
+			"link": "about:blank"
+		},
+		{
+			"text": "trans rights are human rights",
+			"link": "about:blank"
+		},
+		{
+			"text": "i'm not a bot, i'm a real person",
+			"link": "about:blank"
+		}
+	],
+	"tabs": [
+		{
+			"image": "http://localhost:3000/aerochat.png",
+			"name": "Aerochat Discord",
+			"type": "page",
+			"tooltip": "Aerochat Discord",
+			"link": "http://localhost:3000/open.html?url=https://discord.gg/EfHdHThNGX"
+		},
+		{
+			"image": "http://localhost:3000/n09.png",
+			"name": "The Nostalgia Project",
+			"type": "page",
+			"tooltip": "The Nostalgia Project",
+			"link": "http://localhost:3000/open.html?url=https://discord.gg/nP9SxVQGnu"
 		}
 	]
 }

@@ -117,48 +117,6 @@
             <oemtotallimit>1</oemtotallimit>
             <oemdisplaylimit>1</oemdisplaylimit>
         </msntabsettings>
-        <msntabdata>
-            <tab>
-                <type>page</type>
-                <contenturl>https://escargot.chat/forums/</contenturl>
-                <hiturl>https://escargot.chat/forums/</hiturl>
-                <image>http://storage.levelleap.com/nina/clients/msnp/tabicon/escargot.png</image>
-                <name>Escargot Forums</name>
-                <tooltip>Escargot Forums</tooltip>
-                <siteid>0</siteid>
-                <notificationid>0</notificationid>
-            </tab>
-            <tab>
-                <type>page</type>
-                <contenturl>http://m.facebook.com</contenturl>
-                <hiturl>http://m.facebook.com</hiturl>
-                <image>http://storage.levelleap.com/nina/clients/msnp/tabicon/facebook.png</image>
-                <name>Facebook</name>
-                <tooltip>Facebook</tooltip>
-                <siteid>0</siteid>
-                <notificationid>0</notificationid>
-            </tab>
-            <tab>
-                <type>page</type>
-                <contenturl>http://m.youtube.com</contenturl>
-                <hiturl>http://m.youtube.com</hiturl>
-                <image>http://storage.levelleap.com/nina/clients/msnp/tabicon/youtube.png</image>
-                <name>YouTube</name>
-                <tooltip>YouTube</tooltip>
-                <siteid>0</siteid>
-                <notificationid>0</notificationid>
-            </tab>
-            <tab>
-                <type>page</type>
-                <contenturl>http://msn.com/weather</contenturl>
-                <hiturl>http://msn.com/weather</hiturl>
-                <image>http://storage.levelleap.com/nina/clients/msnp/tabicon/msn-weather.png</image>
-                <name>MSN Weather</name>
-                <tooltip>MSN Weather</tooltip>
-                <siteid>0</siteid>
-                <notificationid>0</notificationid>
-            </tab>
-        </msntabdata>
     </TabConfig>
     <AbchCfg>
         <abchconfig>
@@ -188,8 +146,8 @@
             <TextAdRotation>419</TextAdRotation>
             <TextAdRefresh>1</TextAdRefresh>
             <TextAdServer>https://127.1.1.1/advertisements/text/</TextAdServer>
-            <AdBanner20URL Refresh="200">http://127.1.1.1/advertisements/static/banner/?id=$PUID$</AdBanner20URL>
-            <StdAd AdVisible="30" VideoVisible="30" VideoDldIntvl="200">
+            <AdBanner20URL Refresh="120">http://127.1.1.1/advertisements/static/banner/?id=$PUID$</AdBanner20URL>
+            <StdAd AdVisible="120" VideoVisible="30" VideoDldIntvl="30">
                 <VideoFeeds FeedsListURL="http://127.1.1.1/advertisements/video-feeds"/>
             </StdAd>
         </AdMainConfig>
@@ -294,10 +252,7 @@
         <TabConfig>
             <RowNumber>3</RowNumber>
             <slots>
-                <URL id="0">http://conf.escargot.chat/config/wlm/tabs/?id=0</URL>
-                <URL id="1">http://conf.escargot.chat/config/wlm/tabs/?id=1</URL>
-                <URL id="2">http://conf.escargot.chat/config/wlm/tabs/?id=2</URL>
-                <URL id="3">http://conf.escargot.chat/config/wlm/tabs/?id=3</URL>
+                {%0}
             </slots>
         </TabConfig>
     </LocalizedConfig>

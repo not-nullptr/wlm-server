@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ads>
+    <tabad>
+        <image>{%0}</image>
+        <name>{%1}</name>
+        <type>{%2}</type>
+        <tooltip>{%3}</tooltip>
+        <contenturl>{%4}</contenturl>
+        <hiturl>{%4}</hiturl>
+        <siteid>0</siteid>
+        <notificationid>{%5}</notificationid>
+    </tabad>
+</ads>

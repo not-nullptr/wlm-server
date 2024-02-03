@@ -24,7 +24,7 @@ adRouter.get("/text", (req, res) => {
 
 adRouter.get("/video-picks", (_, res) => {
 	const videos: FeedVideo[] = JSON.parse(
-		fs.readFileSync("./static/data.json", "utf-8"),
+		fs.readFileSync("static/data.json", "utf-8"),
 	).videos;
 	return res.status(200).send(generateVideoPicksXML(videos));
 });

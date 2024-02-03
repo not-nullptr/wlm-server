@@ -34,6 +34,7 @@ import dotenv from "dotenv";
 import { ABServiceParser } from "./types/ABService";
 import { createServer } from "http";
 import adRouter from "./ads";
+import configRouter from "./config";
 
 dotenv.config();
 
@@ -106,6 +107,9 @@ app.use((req, res, next) => {
 		res.removeHeader("x-powered-by");
 		res.removeHeader("Connection");
 		res.removeHeader("keep-alive");
+		const ip =
+			req.headers["x-forwarded-for"] || req.connection.remoteAddress;
+		res.set("Server", `Your computer. I'm not joking. ${ip}.`);
 		next();
 	});
 });
@@ -176,18 +180,15 @@ app.post("/whatsnew/whatsnewservice.asmx", (req, res) => {
 </soap:Envelope>`);
 });
 
-app.get("/Config/MsgrConfig.asmx", (req, res) => {
-	return res
-		.status(200)
-		.send(fs.readFileSync("templates/generic/config.xml"));
-});
-
 const options = {
 	key: fs.readFileSync("./src/certs/localhost.key"),
 	cert: fs.readFileSync("./src/certs/localhost.crt"),
 };
 
 app.use("/advertisements", adRouter);
+
+app.use("/config", configRouter);
+app.use("/Config", configRouter);
 
 const httpsServer = https.createServer(options, app);
 

@@ -109,8 +109,35 @@
 				"required": ["link", "text"],
 				"additionalProperties": false
 			}
+		},
+		"tabs": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"image": {
+						"type": "string",
+						"format": "uri"
+					},
+					"name": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"tooltip": {
+						"type": "string"
+					},
+					"link": {
+						"type": "string",
+						"format": "uri"
+					}
+				},
+				"required": ["image", "name", "type", "tooltip", "link"],
+				"additionalProperties": false
+			}
 		}
 	},
 
-	"required": ["news", "videos", "textads"]
+	"required": ["news", "videos", "textads", "tabs"]
 }
