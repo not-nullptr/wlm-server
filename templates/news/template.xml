@@ -1,0 +1,23 @@
+<RecentActivityTemplateContainer>
+	<ApplicationId>505</ApplicationId>
+	<ApplicationName>AppName</ApplicationName>
+	<MiniIconSizeX>0</MiniIconSizeX>
+	<MiniIconSizeY>0</MiniIconSizeY>
+	<ChangeType>20</ChangeType>
+	<Locale>en-us</Locale>
+	<RequestedLocales>
+		<string>en-US</string>
+	</RequestedLocales>
+	<TemplateRevision>1</TemplateRevision>
+	<Templates>
+		<RecentActivityTemplate>
+			<Cardinality>One</Cardinality>
+			<Data>{text:Name}</Data>
+			<Title>{%1}</Title>
+		</RecentActivityTemplate>
+	</Templates>
+	<ActivityType>
+		<string>blog</string>
+	</ActivityType>
+	<CanMergeItemsWithSameObjectID>false</CanMergeItemsWithSameObjectID>
+</RecentActivityTemplateContainer>

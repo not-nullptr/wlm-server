@@ -1,0 +1,19 @@
+<ActivityDetails>
+	<OwnerCID>0</OwnerCID>
+	<ObjectId>{%1}</ObjectId>
+	<ApplicationId>505</ApplicationId>
+	<ChangeType>20</ChangeType>
+	<PublishDate>{%1}</PublishDate>
+	<TemplateVariables>
+		<TemplateVariable xsi:type="TextTemplateVariable">
+			<Name>Name</Name>
+			<Value>{%2}</Value>
+		</TemplateVariable>
+        {%3}
+	</TemplateVariables>
+</ActivityDetails>
+<!-- MAP_TEMPLATE -->
+<TemplateVariable xsi:type="{%1}">
+	<Name>{%2}</Name>
+	<Value>{%3}</Value>
+</TemplateVariable>

@@ -76,3 +76,23 @@ export class RST2Parser {
 		]["wsse:Password"];
 	}
 }
+
+export interface Activity {
+	date: Date;
+	title: string;
+	body: string;
+	variables: { type: "HlinkTemplateVariable"; name: string; value: string }[];
+}
+
+export interface FeedVideo {
+	title: string;
+	link: string;
+	description: string;
+	enclosure: {
+		url: string;
+		length: number;
+		type: string;
+	};
+	guid: string;
+	pubDate: Date;
+}

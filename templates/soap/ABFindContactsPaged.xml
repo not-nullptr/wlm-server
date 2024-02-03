@@ -1,0 +1,56 @@
+<ABFindContactsPagedResponse
+			xmlns="http://www.msn.com/webservices/AddressBook">
+			<ABFindContactsPagedResult>
+				<Groups>
+					<Group>
+						<groupId>780dd9ab-6810-49c2-a04d-124665651c03</groupId>
+						<groupInfo>
+							<annotations>
+								<Annotation>
+									<Name>MSN.IM.Display</Name>
+									<Value>1</Value>
+								</Annotation>
+							</annotations>
+							<groupType>c8529ce2-6ead-434d-881f-341e17db3ff8</groupType>
+							<name>Favorites</name>
+							<IsNotMobileVisible>false</IsNotMobileVisible>
+							<IsPrivate>false</IsPrivate>
+							<IsFavorite>true</IsFavorite>
+						</groupInfo>
+						<propertiesChanged />
+						<fDeleted>false</fDeleted>
+						<lastChange>2024-02-01T19:14:19Z</lastChange>
+					</Group>
+				</Groups>
+				<Contacts>
+					{%1}
+				</Contacts>
+				<CircleResult>
+					<CircleTicket>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;SignedTicket
+						xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+						xmlns:xsd="http://www.w3.org/2001/XMLSchema" ver="1" keyVer="1"&gt;&lt;Data&gt;PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTE2Ij8+DQo8VGlja2V0IHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiPg0KICA8VFM+MDAwMC0wMS0wMVQwMDowMDowMDwvVFM+DQogIDxDSUQ+LTMwNzIwNjcyMDAxODA4OTI4MzwvQ0lEPg0KPC9UaWNrZXQ+&lt;/Data&gt;&lt;Sig&gt;oOU1BOcY0RSObyvDaXOMi/IOUHxPvR/orN4p7ZDZZdygbgM8L+E49rGNWPhoZXd7JwSPlFjiNVK0ixNraPhz7p59mUdZKJpyXhZ1LTKtbp5j5j/aMKahu5SrQsTucqfPRdqOa4GVaZsnKU02vZ1ZsfJ/tkGWyV2/IosP/HX0sAe/mbgJZ2CU+xlfKWuKZZzgXAg7BpBX766Y16fFtWaJILoZPdsJfXQN5Nh4y97WEIHP/SnNAzcK4FGceXRSgOS1CrIpZiM9W986jWAneaBPb5M74kBxL7cmqO31xO5H1JHMkDLNGoRiQz2nFaRT+H1aOpk/kBo7OXJN5tDkaKSghA==&lt;/Sig&gt;&lt;/SignedTicket&gt;
+					</CircleTicket>
+				</CircleResult>
+				<Ab>
+					<abId>00000000-0000-0000-0000-000000000000</abId>
+					<abInfo>
+						<ownerPuid>0</ownerPuid>
+						<OwnerCID>-307206720018089283</OwnerCID>
+						<ownerEmail>samplecontact@escargot.chat</ownerEmail>
+						<fDefault>true</fDefault>
+						<joinedNamespace>false</joinedNamespace>
+						<IsBot>true</IsBot>
+						<IsParentManaged>false</IsParentManaged>
+						<AccountTierLastChanged>0001-01-01T00:00:00</AccountTierLastChanged>
+						<ProfileVersion>0</ProfileVersion>
+						<SubscribeExternalPartner>false</SubscribeExternalPartner>
+						<NotifyExternalPartner>false</NotifyExternalPartner>
+						<AddressBookType>Individual</AddressBookType>
+					</abInfo>
+					<lastChange>2024-02-01T19:14:19Z</lastChange>
+					<DynamicItemLastChanged>0001-01-01T00:00:00</DynamicItemLastChanged>
+					<createDate>2023-10-08T15:10:37Z</createDate>
+					<propertiesChanged />
+				</Ab>
+			</ABFindContactsPagedResult>
+		</ABFindContactsPagedResponse>

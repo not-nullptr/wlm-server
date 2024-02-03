@@ -1,0 +1,8 @@
+<item>
+    <title>{%1}</title>
+    <link>{%2}</link>
+    <description>{%3}</description>
+    <enclosure url="{%4}" type="{%5}" length="{%6}" />
+    <guid>{%7}</guid>
+    <pubDate>{%8}</pubDate>
+</item>

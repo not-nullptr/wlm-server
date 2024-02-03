@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<rss version="2.0">
+    <channel>
+        <title>Aerochat Videos</title>
+        <link>https://aerochat.live</link>
+        <description>Aerochat Videos</description>
+        <language>en-us</language>
+        <copyright>nullptr</copyright>
+        <lastBuildDate>Wed, 28 Sep 2018 11:25:11 GMT</lastBuildDate>
+        <category>MSN_Microsoft</category>
+        <ttl>0</ttl>
+        <item>
+            <title>Our Picks</title>
+            <link>http://127.1.1.1/advertisements/video-picks</link>
+            <description>Our Picks</description>
+            <pubDate>Wed, 28 Sep 2018 00:00:00 GMT</pubDate>
+            <category>MSN_Microsoft</category>
+        </item>
+    </channel>
+</rss>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Aerochat Video</title>
+        <link>https://aerochat.live</link>
+        <description>Aerochat Video</description>
+        <copyright>Aerochat</copyright>
+        <language>en-us</language>
+        <ttl>10</ttl>
+        <lastBuildDate>Fri, 28 Jan 2023 04:00:55 GMT</lastBuildDate>
+        {%1}
+    </channel>
+</rss>

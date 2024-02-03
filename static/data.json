@@ -1,0 +1,37 @@
+{
+	"$schema": "../data.schema.json",
+	"news": [
+		{
+			"date": "2024-02-02T21:30:33+00:00",
+			"title": "Discord server",
+			"body": "Welcome to the new and improved (?) Aerochat! We'll post news and other goodies here. For now, you can join our {hlink:Url=\"Discord server\"} for updates!",
+			"variables": [
+				{
+					"type": "HlinkTemplateVariable",
+					"name": "Url",
+					"value": "https://discord.gg/EfHdHThNGX"
+				}
+			]
+		}
+	],
+	"videos": [
+		{
+			"guid": "podcast",
+			"title": "WE HAVE A PODCAST",
+			"description": "HEY FUCKFACE!! Wanna hear a loser talk about a niche messenger from 12 years ago? No? Well fuck you!",
+			"link": "https://aerochat.live",
+			"pubDate": "2024-02-03T21:30:33+00:00",
+			"enclosure": {
+				"url": "http://127.1.1.1:3000/thumb.png",
+				"type": "image/jpeg",
+				"length": 1
+			}
+		}
+	],
+	"textads": [
+		{
+			"text": "FREE MY BOY RAINO HE AINT DO NUN WRONG",
+			"link": "https://aerochat.live/"
+		}
+	]
+}

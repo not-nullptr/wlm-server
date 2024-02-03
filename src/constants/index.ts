@@ -21,6 +21,7 @@ export const logs = {
 	RST2: `${colors.blue("RST2")}`,
 	HTTP: `${colors.green("HTTP")}`,
 	HTTPS: `${colors.green("HTTPS")}`,
+	static: `${colors.green("Static")}`,
 	TCP: `${colors.redBright("TCP")}`,
 };
 

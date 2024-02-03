@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>my granny called she said travvy u work too hard (ball ball ball)</title>
+    <meta name="theme-color" content="#3f568f" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0b0a1b;
+            font-family: "Segoe UI", sans-serif;
+            font-size: 9pt;
+            color: white;
+            width: 500px;
+        }
+
+        .container {
+            margin: 0 auto;
+            height: 100%;
+        }
+
+        .video {
+            height: 430px;
+        }
+
+        .on-top {
+            position: absolute;
+            margin-left: 8px;
+            margin-top: 4px;
+            width: 530px;
+        }
+
+        .bottom-right {
+            position: fixed;
+            bottom: 0;
+            right: 4px;
+            margin: 8px;
+        }
+
+        a {
+            cursor: pointer;
+            color: #359aff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 18px;
+            font-weight: normal;
+        }
+
+        .divider {
+            border-right: 1px solid #1f3347;
+            padding-right: 7px;
+            margin-right: 4px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () { var ver = document.getElementById("ver"); var version = window.location.href.split("?ver=")[1]; if (version && ver) { ver.innerText = ver.innerText.replace("%1", version).replace("not working", "working"); } };
+        function preventDefaultFallback() {
+            if (window.event.preventDefault) {
+                window.event.preventDefault();
+            } else {
+                window.event.returnValue = false;
+            }
+        }
+
+        function NavPage() {
+            var tmp, e, srcE, url;
+            srcE = window.event.srcElement;
+            if (srcE != null) {
+                tmp = srcE.tagName;
+                while (tmp != "BODY") {
+                    if (tmp == "A") {
+                        e = srcE;
+                        break;
+                    } else {
+                        srcE = srcE.parentElement;
+                        tmp = srcE.tagName;
+                    }
+                }
+                if (e != null) {
+                    url = e.href;
+                    if (url.indexOf("javascript:") == -1) {
+                        window.open(url, "msnt");
+                        preventDefaultFallback();
+                    } else {
+                        eval(url.substring(11, url.length)); // @BUG Vid80784674- Obviously open to seriously dangerous XSS attack
+                        preventDefaultFallback();
+                    }
+                }
+            }
+        }
+
+        window.onerror = function () {
+            return true;
+        };
+
+        try {
+            if (window.location.search.indexOf("nopop=true") == -1) {
+                window.external.MsgrHost.ShowMessengerHostWnd(0);
+            }
+        } catch (e) {
+            alert(e.message)
+        }
+    </script>
+    <!--<script src="//static.levelleap.com/vendor/base/base.js"></script>
+	<script src="//static.levelleap.com/vendor/base/ui/base.ui.js"></script>-->
+</head>
+
+<body onclick="NavPage();">
+    <div class="container">
+        <div class="on-top">
+            <h1 style="margin-top: 8px;">this is aerochat BITCH</h1>
+            <div style="margin-top: -8px;">
+                special thanks to the archival team at <a href="https://nina.chat">nina</a> for making this even
+                remotely possible
+            </div>
+            <div id="ver">
+                (you're running Windows Live Messenger version %1, javascript bypass in today window is not working)
+            </div>
+            <div class="bottom-right">
+                <a href="https://aerochat.live" class="divider">visit the site</a>
+                <a href="https://discord.gg/EfHdHThNGX" class="divider">join the discord</a>
+                <a href="#">donate</a>
+            </div>
+        </div>
+        <img class="video" src="http://localhost:3000/video.gif" />
+    </div>
+</body>
+
+</html>
