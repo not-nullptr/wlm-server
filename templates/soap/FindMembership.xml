@@ -1,0 +1,97 @@
+<FindMembershipResponse xmlns="http://www.msn.com/webservices/AddressBook">
+    <FindMembershipResult>
+        <Services>
+            <Service>
+                <Memberships>
+                    <Membership>
+                        <MemberRole>Allow</MemberRole>
+                        <Members>
+                            <Member xsi:type="PassportMember">
+                                <MembershipId>Allow/aa1888d5-0df9-4388-b264-8d8befac2421</MembershipId>
+                                <Type>Passport</Type>
+                                <State>Accepted</State>
+                                <Deleted>false</Deleted>
+                                <LastChanged>2024-02-03T22:44:28Z</LastChanged>
+                                <JoinedDate>2023-08-21T15:58:33Z</JoinedDate>
+                                <ExpirationDate>0001-01-01T00:00:00</ExpirationDate>
+                                <Changes />
+                                <PassportName>nullptr@escargot.chat</PassportName>
+                                <IsPassportNameHidden>false</IsPassportNameHidden>
+                                <PassportId>0</PassportId>
+                                <CID>2388223847251666098</CID>
+                                <PassportChanges />
+                                <LookedupByCID>false</LookedupByCID>
+                            </Member>
+                        </Members>
+                        <MembershipIsComplete>true</MembershipIsComplete>
+                    </Membership>
+                    <Membership>
+                        <MemberRole>Block</MemberRole>
+                        <Members></Members>
+                        <MembershipIsComplete>true</MembershipIsComplete>
+                    </Membership>
+                    <Membership>
+                        <MemberRole>Reverse</MemberRole>
+                        <Members>
+                            <Member xsi:type="PassportMember">
+                                <MembershipId>Reverse/aa1888d5-0df9-4388-b264-8d8befac2421</MembershipId>
+                                <Type>Passport</Type>
+                                <State>Accepted</State>
+                                <Deleted>false</Deleted>
+                                <LastChanged>2024-02-03T22:44:28Z</LastChanged>
+                                <JoinedDate>2023-08-21T15:58:33Z</JoinedDate>
+                                <ExpirationDate>0001-01-01T00:00:00</ExpirationDate>
+                                <Changes />
+                                <PassportName>nullptr@escargot.chat</PassportName>
+                                <IsPassportNameHidden>false</IsPassportNameHidden>
+                                <PassportId>0</PassportId>
+                                <CID>2388223847251666098</CID>
+                                <PassportChanges />
+                                <LookedupByCID>false</LookedupByCID>
+                            </Member>
+                        </Members>
+                        <MembershipIsComplete>true</MembershipIsComplete>
+                    </Membership>
+                    <Membership>
+                        <MemberRole>Pending</MemberRole>
+                        <Members></Members>
+                        <MembershipIsComplete>true</MembershipIsComplete>
+                    </Membership>
+                </Memberships>
+                <Info>
+                    <Handle>
+                        <Id>1</Id>
+                        <Type>Messenger</Type>
+                        <ForeignId />
+                    </Handle>
+                    <InverseRequired>false</InverseRequired>
+                    <AuthorizationCriteria>Everyone</AuthorizationCriteria>
+                    <IsBot>false</IsBot>
+                </Info>
+                <Changes />
+                <LastChange>2024-02-03T22:44:28Z</LastChange>
+                <Deleted>false</Deleted>
+            </Service>
+        </Services>
+        <OwnerNamespace>
+            <Info>
+                <Handle>
+                    <Id>00000000-0000-0000-0000-000000000000</Id>
+                    <IsPassportNameHidden>false</IsPassportNameHidden>
+                    <CID>0</CID>
+                </Handle>
+                <CreatorPuid>0</CreatorPuid>
+                <CreatorCID>-307206720018089283</CreatorCID>
+                <CreatorPassportName>nullptralt@escargot.chat</CreatorPassportName>
+                <CircleAttributes>
+                    <IsPresenceEnabled>false</IsPresenceEnabled>
+                    <Domain>WindowsLive</Domain>
+                </CircleAttributes>
+                <MessengerApplicationServiceCreated>false</MessengerApplicationServiceCreated>
+            </Info>
+            <Changes />
+            <CreateDate>2024-02-03T22:44:28Z</CreateDate>
+            <LastChange>2024-02-03T22:44:28Z</LastChange>
+        </OwnerNamespace>
+    </FindMembershipResult>
+</FindMembershipResponse>

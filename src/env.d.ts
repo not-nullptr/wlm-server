@@ -15,5 +15,6 @@ declare module "net" {
 namespace NodeJS {
 	export interface ProcessEnv {
 		JWT_SECRET: string;
+		DISCORD_TOKEN: string;
 	}
 }

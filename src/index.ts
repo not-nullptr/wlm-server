@@ -339,6 +339,7 @@ function parse(message: string) {
 }
 
 (async () => {
+	await MSNUtils.startGateway();
 	const handlerTs = fs.readdirSync("./src/handlers");
 	const handlers = await Promise.all(
 		handlerTs.map(async (handler) => {
@@ -378,7 +379,6 @@ function parse(message: string) {
 			socket.write(data + "\r\n");
 		}
 		socket.on("data", (data) => {
-			console.log(colors.bgBlue(colors.white(data.toString())));
 			const cmds = parse(data.toString());
 			cmds.forEach((cmd) => {
 				const handler = handlers.find(

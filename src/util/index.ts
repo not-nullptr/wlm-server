@@ -6,6 +6,18 @@ import { Token } from "../types/User";
 import { readFileSync } from "fs";
 import { Activity, FeedVideo } from "../types/REST";
 import { Contact } from "../types/Soap";
+import {
+	APIUser,
+	GatewayDispatchEvents,
+	GatewayDispatchPayload,
+	GatewayOpcodes,
+	GatewayReceivePayload,
+	GatewaySendPayload,
+} from "discord-api-types/v9";
+import WebSocket from "ws";
+import { RelationshipTypes } from "discord.js-selfbot-v13/typings/enums";
+import { listeners } from "process";
+import { Ready } from "./Discord";
 
 export const sockets: Socket[] = [];
 
@@ -30,7 +42,161 @@ export function log(prefix: string, ...lines: string[]) {
 	}
 }
 
+export enum DispatchEventsCustom {
+	RelationshipRemove = "RELATIONSHIP_REMOVE",
+}
+
+export type DispatchPayloadsCustom =
+	| GatewayDispatchPayload
+	| {
+			t: DispatchEventsCustom.RelationshipRemove;
+			op: GatewayOpcodes.Dispatch;
+			d: {
+				id: string;
+				type: RelationshipTypes;
+				nickname: string;
+			};
+	  };
+
+export type DispatchData<
+	T extends GatewayDispatchEvents | DispatchEventsCustom,
+> = (DispatchPayloadsCustom & {
+	t: T;
+})["d"];
+
+export type OpcodeSendData<T extends GatewayOpcodes> = (GatewaySendPayload & {
+	op: T;
+})["d"];
+
+export type OpcodeReceiveData<T extends GatewayOpcodes> =
+	(GatewayReceivePayload & {
+		op: T;
+	})["d"];
+
+enum GatewayCapabilities {
+	LAZY_USER_NOTES = 1 << 0,
+	NO_AFFINE_USER_IDS = 1 << 1,
+	VERSIONED_READ_STATES = 1 << 2,
+	VERSIONED_USER_GUILD_SETTINGS = 1 << 3,
+	DEDUPE_USER_OBJECTS = 1 << 4,
+	PRIORITIZED_READY_PAYLOAD = 1 << 5,
+	MULTIPLE_GUILD_EXPERIMENT_POPULATIONS = 1 << 6,
+	NON_CHANNEL_READ_STATES = 1 << 7,
+	AUTH_TOKEN_REFRESH = 1 << 8,
+	USER_SETTINGS_PROTO = 1 << 9,
+	CLIENT_STATE_V2 = 1 << 10,
+	PASSIVE_GUILD_UPDATE = 1 << 11,
+	UNKNOWN = 1 << 12,
+}
+
 export class MSNUtils {
+	static socket: WebSocket;
+	static sendOp<T extends GatewayOpcodes>(
+		opcode: T,
+		payload: OpcodeSendData<T>,
+	): void {
+		try {
+			const data = {
+				op: opcode,
+				d: payload,
+			};
+			this.socket.send(JSON.stringify(data));
+		} catch {
+			console.log("failed to send op", opcode, payload);
+		}
+	}
+	static readyData: Ready;
+	static async startGateway() {
+		return new Promise<void>((resolve) => {
+			this.socket = new WebSocket(
+				"wss://gateway.discord.gg/?v=9&encoding=json",
+			);
+			this.socket.onopen = async () => {
+				MSNUtils.sendOp(GatewayOpcodes.Identify, {
+					token: process.env.DISCORD_TOKEN,
+					capabilities:
+						GatewayCapabilities.LAZY_USER_NOTES |
+						GatewayCapabilities.NO_AFFINE_USER_IDS |
+						GatewayCapabilities.VERSIONED_READ_STATES |
+						GatewayCapabilities.VERSIONED_USER_GUILD_SETTINGS |
+						GatewayCapabilities.DEDUPE_USER_OBJECTS |
+						GatewayCapabilities.PRIORITIZED_READY_PAYLOAD |
+						GatewayCapabilities.MULTIPLE_GUILD_EXPERIMENT_POPULATIONS |
+						GatewayCapabilities.NON_CHANNEL_READ_STATES |
+						GatewayCapabilities.AUTH_TOKEN_REFRESH |
+						GatewayCapabilities.USER_SETTINGS_PROTO |
+						GatewayCapabilities.CLIENT_STATE_V2 |
+						GatewayCapabilities.PASSIVE_GUILD_UPDATE |
+						GatewayCapabilities.UNKNOWN,
+					properties: {
+						os: "Linux",
+						browser: "Chrome",
+						device: "",
+						system_locale: "en-GB",
+						browser_user_agent:
+							"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+						browser_version: "119.0.0.0",
+						os_version: "",
+						referrer: "",
+						referring_domain: "",
+						referrer_current: "",
+						referring_domain_current: "",
+						release_channel: "stable",
+						client_build_number: 245648,
+						client_event_source: null,
+					},
+					presence: {
+						status: "unknown",
+						since: 0,
+						activities: [],
+						afk: false,
+					},
+					compress: false,
+					client_state: {
+						guild_versions: {},
+						highest_last_message_id: "0",
+						read_state_version: 0,
+						user_guild_settings_version: -1,
+						user_settings_version: -1,
+						private_channels_version: "0",
+						api_code_version: 0,
+					},
+				} as any);
+			};
+			this.socket.onmessage = (e) => {
+				const data = JSON.parse(
+					e.data.toString(),
+				) as GatewayReceivePayload;
+				switch (data.op) {
+					case GatewayOpcodes.Hello:
+						setInterval(() => {
+							this.sendOp(GatewayOpcodes.Heartbeat, null);
+						}, data.d.heartbeat_interval);
+						break;
+					case GatewayOpcodes.Dispatch: {
+						const dispatchData = data as DispatchPayloadsCustom;
+						switch (dispatchData.t) {
+							case GatewayDispatchEvents.Ready: {
+								this.readyData =
+									dispatchData.d as unknown as Ready;
+								break;
+							}
+							case "READY_SUPPLEMENTAL" as any: {
+								this.readyData = {
+									...this.readyData,
+									...dispatchData.d,
+								} as any;
+								resolve();
+								break;
+							}
+						}
+						break;
+					}
+				}
+			};
+		});
+	}
+
 	static getSocketByPassport(passport: string) {
 		return sockets.find((s) => s.passport === passport);
 	}
@@ -190,4 +356,20 @@ export function generateVideoPicksXML(videos: FeedVideo[]) {
 	let picks = readFileSync("templates/news/video-picks.xml").toString();
 	picks = picks.replace("{%1}", videos.map(generateFeedVideo).join("\n"));
 	return picks;
+}
+
+export async function discordReq<Req = any, Res = any>(
+	endpoint: string,
+	method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE",
+	body?: Req,
+) {
+	const res = await fetch(`https://discord.com/api/v9${endpoint}`, {
+		method,
+		headers: {
+			Authorization: process.env.DISCORD_TOKEN,
+			"Content-Type": "application/json",
+		},
+		body: body ? JSON.stringify(body) : undefined,
+	});
+	return res.json() as Promise<Res>;
 }
