@@ -5,56 +5,7 @@
                 <Memberships>
                     <Membership>
                         <MemberRole>Allow</MemberRole>
-                        <Members>
-                            <Member xsi:type="PassportMember">
-                                <MembershipId>Allow/01835ed4-0271-4aae-bba4-30483be03931</MembershipId>
-                                <Type>Passport</Type>
-                                <State>Accepted</State>
-                                <Deleted>false</Deleted>
-                                <LastChanged>2024-02-04T13:58:19Z</LastChanged>
-                                <JoinedDate>2022-03-26T04:38:28Z</JoinedDate>
-                                <ExpirationDate>0001-01-01T00:00:00</ExpirationDate>
-                                <Changes />
-                                <PassportName>jakeyz@escargot.chat</PassportName>
-                                <IsPassportNameHidden>false</IsPassportNameHidden>
-                                <PassportId>0</PassportId>
-                                <CID>3547112726749815995</CID>
-                                <PassportChanges />
-                                <LookedupByCID>false</LookedupByCID>
-                            </Member>
-                            <Member xsi:type="PassportMember">
-                                <MembershipId>Allow/db4f6220-b032-42de-b2fc-001df938d986</MembershipId>
-                                <Type>Passport</Type>
-                                <State>Accepted</State>
-                                <Deleted>false</Deleted>
-                                <LastChanged>2024-02-04T13:58:19Z</LastChanged>
-                                <JoinedDate>2023-12-17T10:15:45Z</JoinedDate>
-                                <ExpirationDate>0001-01-01T00:00:00</ExpirationDate>
-                                <Changes />
-                                <PassportName>nitsukki@escargot.chat</PassportName>
-                                <IsPassportNameHidden>false</IsPassportNameHidden>
-                                <PassportId>0</PassportId>
-                                <CID>-8729883760096379726</CID>
-                                <PassportChanges />
-                                <LookedupByCID>false</LookedupByCID>
-                            </Member>
-                            <Member xsi:type="PassportMember">
-                                <MembershipId>Allow/5ce48e35-7c90-44fa-ac8f-3f07950beea3</MembershipId>
-                                <Type>Passport</Type>
-                                <State>Accepted</State>
-                                <Deleted>false</Deleted>
-                                <LastChanged>2024-02-04T13:58:19Z</LastChanged>
-                                <JoinedDate>2024-01-05T18:25:28Z</JoinedDate>
-                                <ExpirationDate>0001-01-01T00:00:00</ExpirationDate>
-                                <Changes />
-                                <PassportName>exorcism@escargot.chat</PassportName>
-                                <IsPassportNameHidden>false</IsPassportNameHidden>
-                                <PassportId>0</PassportId>
-                                <CID>-6634352466370523220</CID>
-                                <PassportChanges />
-                                <LookedupByCID>false</LookedupByCID>
-                            </Member>
-                        </Members>
+                        <Members></Members>
                         <MembershipIsComplete>true</MembershipIsComplete>
                     </Membership>
                     <Membership>
