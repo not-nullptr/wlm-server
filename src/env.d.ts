@@ -9,6 +9,7 @@ declare module "net" {
 		passport?: string;
 		sessionId?: string;
 		ticket?: string;
+		machineGuid?: string;
 	}
 }
 

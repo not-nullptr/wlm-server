@@ -2,7 +2,7 @@ import colors from "chalk";
 import { Socket } from "net";
 import { randomBytes } from "crypto";
 import jwt from "jsonwebtoken";
-import { Token } from "../types/User";
+import { MSNStatus, Token } from "../types/User";
 import { readFileSync } from "fs";
 import { Activity, FeedVideo } from "../types/REST";
 import { Contact } from "../types/Soap";
@@ -17,7 +17,9 @@ import {
 import WebSocket from "ws";
 import { RelationshipTypes } from "discord.js-selfbot-v13/typings/enums";
 import { listeners } from "process";
-import { Ready } from "./Discord";
+import { Ready, Status } from "./Discord";
+import { v4 } from "uuid";
+import { NLNOptions, UBXOptions } from "../types/Socket";
 
 export const sockets: Socket[] = [];
 
@@ -189,6 +191,11 @@ export class MSNUtils {
 								resolve();
 								break;
 							}
+							case GatewayDispatchEvents.PresenceUpdate: {
+								this.listeners
+									.find((l) => l.e === "PRESENCE_UPDATE")
+									?.cb(dispatchData.d);
+							}
 						}
 						break;
 					}
@@ -196,7 +203,14 @@ export class MSNUtils {
 			};
 		});
 	}
-
+	static listeners: { e: string; cb: (data: any) => void; id: string }[] = [];
+	static on(event: string, cb: (data: any) => void) {
+		const id = v4();
+		this.listeners.push({ e: event, cb, id });
+	}
+	static off(id: string) {
+		this.listeners = this.listeners.filter((l) => l.id !== id);
+	}
 	static getSocketByPassport(passport: string) {
 		return sockets.find((s) => s.passport === passport);
 	}
@@ -372,4 +386,34 @@ export async function discordReq<Req = any, Res = any>(
 		body: body ? JSON.stringify(body) : undefined,
 	});
 	return res.json() as Promise<Res>;
+}
+
+function genNLN(options: NLNOptions) {
+	return `NLN ${options.status} 1:${options.passport} ${options.displayName.replaceAll(
+		" ",
+		"%20",
+	)} ${options.id}:48 0\r\n`;
+}
+
+function genUBX(options: UBXOptions) {
+	const guid = v4();
+	const xml = `<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{${guid}}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{${guid.toLowerCase()}}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>`;
+	return `UBX 1:${options.passport} ${xml.length}\r\n${xml}`;
+}
+
+export function generatePresences(options: (NLNOptions & UBXOptions)[]) {
+	return options.map((o) => `${genNLN(o)}${genUBX(o)}`);
+}
+
+export function discordStatusToMSNStatus(status: Status): MSNStatus {
+	switch (status) {
+		case Status.Online:
+			return MSNStatus.Online;
+		case Status.Idle:
+			return MSNStatus.Away;
+		case Status.DND:
+			return MSNStatus.Busy;
+		case Status.Offline:
+			return MSNStatus.Offline;
+	}
 }

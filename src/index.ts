@@ -6,8 +6,10 @@ import xml2js from "xml2js";
 import { Activity, FeedVideo, RST2Parser, Rst2 } from "./types/REST";
 import {
 	MSNUtils,
+	discordStatusToMSNStatus,
 	encodeJWT,
 	generateActivityXML,
+	generatePresences,
 	generateTemplateXML,
 	generateVideoPicksXML,
 	getRST2Failure,
@@ -35,6 +37,7 @@ import { ABServiceParser } from "./types/ABService";
 import { createServer } from "http";
 import adRouter from "./ads";
 import configRouter from "./config";
+import { GatewayPresenceUpdate } from "discord-api-types/v9";
 
 dotenv.config();
 
@@ -350,6 +353,7 @@ function parse(message: string) {
 					data: ICommand,
 					send: SendFunction,
 					socket: net.Socket,
+					rawMessage: string,
 				) => void,
 			};
 		}),
@@ -378,6 +382,31 @@ function parse(message: string) {
 			console.log(logs.send, data);
 			socket.write(data + "\r\n");
 		}
+		const id = MSNUtils.on(
+			"PRESENCE_UPDATE",
+			(d: GatewayPresenceUpdate) => {
+				const user = MSNUtils.readyData.users.find(
+					(u) => u.id === d.user.id,
+				);
+				if (
+					!user ||
+					!MSNUtils.readyData.relationships.find(
+						(r) => r.user_id === d.user.id,
+					)
+				)
+					return;
+				socket.write(
+					generatePresences([
+						{
+							passport: `${user.username}@discord.com`,
+							displayName: user.global_name || user.username,
+							status: discordStatusToMSNStatus(d.status! as any),
+							id: "0000000000",
+						},
+					]).join(""),
+				);
+			},
+		);
 		socket.on("data", (data) => {
 			const cmds = parse(data.toString());
 			cmds.forEach((cmd) => {
@@ -395,6 +424,7 @@ function parse(message: string) {
 							);
 						},
 						socket,
+						data.toString(),
 					);
 				} else {
 					console.log(

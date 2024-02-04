@@ -1,0 +1,49 @@
+<Membership>
+    <MemberRole>Allow</MemberRole>
+    <Members>
+        <Member xsi:type="PassportMember">
+            <MembershipId>Allow/01835ed4-0271-4aae-bba4-30483be03931</MembershipId>
+            <Type>Passport</Type>
+            <State>Accepted</State>
+            <Deleted>false</Deleted>
+            <LastChanged>2024-02-04T13:07:23Z</LastChanged>
+            <JoinedDate>2022-03-26T04:38:28Z</JoinedDate>
+            <ExpirationDate>0001-01-01T00:00:00</ExpirationDate>
+            <Changes />
+            <PassportName>jakeyz@escargot.chat</PassportName>
+            <IsPassportNameHidden>false</IsPassportNameHidden>
+            <PassportId>0</PassportId>
+            <CID>3547112726749815995</CID>
+            <PassportChanges />
+            <LookedupByCID>false</LookedupByCID>
+        </Member>
+    </Members>
+    <MembershipIsComplete>true</MembershipIsComplete>
+</Membership>
+<Membership>
+    <MemberRole>Block</MemberRole>
+    <Members></Members>
+    <MembershipIsComplete>true</MembershipIsComplete>
+</Membership>
+<Membership>
+    <MemberRole>Reverse</MemberRole>
+    <Members>
+        <Member xsi:type="PassportMember">
+            <MembershipId>Reverse/01835ed4-0271-4aae-bba4-30483be03931</MembershipId>
+            <Type>Passport</Type>
+            <State>Accepted</State>
+            <Deleted>false</Deleted>
+            <LastChanged>2024-02-04T13:07:23Z</LastChanged>
+            <JoinedDate>2022-03-26T04:38:28Z</JoinedDate>
+            <ExpirationDate>0001-01-01T00:00:00</ExpirationDate>
+            <Changes />
+            <PassportName>jakeyz@escargot.chat</PassportName>
+            <IsPassportNameHidden>false</IsPassportNameHidden>
+            <PassportId>0</PassportId>
+            <CID>3547112726749815995</CID>
+            <PassportChanges />
+            <LookedupByCID>false</LookedupByCID>
+        </Member>
+    </Members>
+    <MembershipIsComplete>true</MembershipIsComplete>
+</Membership>

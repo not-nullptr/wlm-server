@@ -29,7 +29,6 @@ export default async function USR(
 	send: SendFunction,
 	socket: Socket,
 ) {
-	console.log(data);
 	if (data.state === UsrState.Initial) {
 		socket.passport = data.passport;
 		log(
@@ -51,6 +50,7 @@ export default async function USR(
 			logs.USR,
 			`GUID ${colors.yellow(data.machineGuid)} attempting log-in...`,
 		);
+		socket.machineGuid = data.machineGuid;
 		if (!data.t) return socket.destroy();
 		log(logs.USR, `Ticket: ${colors.yellow(data.t)}`);
 		try {
@@ -86,33 +86,6 @@ MSPAuth: ${data.t}\r\n
 ClientIP: 87.254.0.131\r\n
 ClientPort: 29612\r\n
 ABCHMigrated:`);
-			setTimeout(async () => {
-				socket.write(` 1\r\n
-MPOPEnabled: 1\r\n
-BetaInvites: 1\r\n\r\nUBX 1:${jwt.passport} 0`);
-				const friends = MSNUtils.readyData.users;
-				const messages: string[][] = [];
-				for (const friend of friends) {
-					const presence =
-						MSNUtils.readyData.merged_presences.friends.find(
-							(f) => f.user_id === friend.id,
-						);
-					if (!presence) continue;
-					const xml = `<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{3AC234CF-2B77-479C-A0A3-21311B718CD0}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{3ac234cf-2b77-479c-a0a3-21311b718cd0}"><Capabilities>${friend.id}</Capabilities></EndpointData></Data>`;
-					const status = presenceToStatus(presence.status);
-					if (status === "dont-send") continue;
-					messages.push([
-						`NLN ${status} 1:${friend.username}@discord.com ${encodeURIComponent(friend.global_name || friend.username)} ${friend.id} 0\r\nUBX 1:${friend.username}@discord.com ${xml.length}\r\n${xml}`,
-					]);
-					if (friend.username === "_pong._.") console.log("PONG!");
-				}
-				for (const group of messages) {
-					for (const message of group) {
-						socket.write(Buffer.from(message));
-						await sleep(50);
-					}
-				}
-			}, 50);
 		} catch {
 			socket.destroy();
 			log(logs.warning, "Invalid JWT, socket destroyed");
