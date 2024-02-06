@@ -1,90 +1,10 @@
 <ABFindContactsPagedResponse xmlns="http://www.msn.com/webservices/AddressBook">
 	<ABFindContactsPagedResult>
 		<Groups>
-
-			<Group>
-				<groupId>25430f23-77bb-4049-966c-f7b8e0249489</groupId>
-				<groupInfo>
-					<annotations>
-						<Annotation>
-							<Name>MSN.IM.Display</Name>
-							<Value>1</Value>
-						</Annotation>
-					</annotations>
-					<groupType>c8529ce2-6ead-434d-881f-341e17db3ff8</groupType>
-					<name>Favorites</name>
-					<IsNotMobileVisible>false</IsNotMobileVisible>
-					<IsPrivate>false</IsPrivate>
-					<IsFavorite>true</IsFavorite>
-				</groupInfo>
-				<propertiesChanged />
-				<fDeleted>false</fDeleted>
-				<lastChange>2024-02-04T13:58:21Z</lastChange>
-			</Group>
-
-			<Group>
-				<groupId>f2c77657-c782-4a49-8eeb-c57507d71159</groupId>
-				<groupInfo>
-					<annotations>
-						<Annotation>
-							<Name>MSN.IM.Display</Name>
-							<Value>1</Value>
-						</Annotation>
-					</annotations>
-					<groupType>c8529ce2-6ead-434d-881f-341e17db3ff8</groupType>
-					<name>Coworkers</name>
-					<IsNotMobileVisible>false</IsNotMobileVisible>
-					<IsPrivate>false</IsPrivate>
-					<IsFavorite>false</IsFavorite>
-				</groupInfo>
-				<propertiesChanged />
-				<fDeleted>false</fDeleted>
-				<lastChange>2024-02-04T13:58:21Z</lastChange>
-			</Group>
-
-			<Group>
-				<groupId>06a2a129-5c17-497a-ad57-45557393910d</groupId>
-				<groupInfo>
-					<annotations>
-						<Annotation>
-							<Name>MSN.IM.Display</Name>
-							<Value>1</Value>
-						</Annotation>
-					</annotations>
-					<groupType>c8529ce2-6ead-434d-881f-341e17db3ff8</groupType>
-					<name>Friends</name>
-					<IsNotMobileVisible>false</IsNotMobileVisible>
-					<IsPrivate>false</IsPrivate>
-					<IsFavorite>false</IsFavorite>
-				</groupInfo>
-				<propertiesChanged />
-				<fDeleted>false</fDeleted>
-				<lastChange>2024-02-04T13:58:21Z</lastChange>
-			</Group>
-
-			<Group>
-				<groupId>5c7cdda1-fbe2-408b-afdf-82d180725466</groupId>
-				<groupInfo>
-					<annotations>
-						<Annotation>
-							<Name>MSN.IM.Display</Name>
-							<Value>1</Value>
-						</Annotation>
-					</annotations>
-					<groupType>c8529ce2-6ead-434d-881f-341e17db3ff8</groupType>
-					<name>Family</name>
-					<IsNotMobileVisible>false</IsNotMobileVisible>
-					<IsPrivate>false</IsPrivate>
-					<IsFavorite>false</IsFavorite>
-				</groupInfo>
-				<propertiesChanged />
-				<fDeleted>false</fDeleted>
-				<lastChange>2024-02-04T13:58:21Z</lastChange>
-			</Group>
-
+			{%1}
 		</Groups>
 		<Contacts>
-			{%1}
+			{%2}
 		</Contacts>
 		<CircleResult>
 			<CircleTicket>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;SignedTicket xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ver="1" keyVer="1"&gt;&lt;Data&gt;PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTE2Ij8+DQo8VGlja2V0IHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiPg0KICA8VFM+MDAwMC0wMS0wMVQwMDowMDowMDwvVFM+DQogIDxDSUQ+MjM4ODIyMzg0NzI1MTY2NjA5ODwvQ0lEPg0KPC9UaWNrZXQ+&lt;/Data&gt;&lt;Sig&gt;vcSlmmt79AcrF1b/ulxVC/gSjYqeWWs0UfoLCE3bYi/q3FcYArutJ5FAfKGnODaM+10I4YSSFZ+3T5fiQ64lPXt5nIu7l6mhOwxJTbAS6WOYbrOSV4ahU+CWOp58v7UZC21/XYVcy8/QRd13gskEb0QLFpXmemL/MUrWTt9k+4aHZCak73k1sC7P7lizarPyBct9/mpriMlLLmg0faDOs9f13yM3vFS6uV64qQxGJj1tMjNtRnWGg48igruqAl1QsjB/IIsp1FC8rGUNUwXtn2ZF0mdr8ZrMXn42kv5t/rJQFT/gwG+ImTM3zWZbeOyoL2pZGQ4JbtKT65IHp134JA==&lt;/Sig&gt;&lt;/SignedTicket&gt;</CircleTicket>

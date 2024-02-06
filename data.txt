@@ -1,0 +1,278 @@
+NLN NLN 1:offhost_cfw@discord.com synergy 0000000000:48 0
+UBX 1:offhost_cfw@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{3d4d691f-fcf7-4a46-b195-5697392f3e0d}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{3d4d691f-fcf7-4a46-b195-5697392f3e0d}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:neptune.com@discord.com neptuneen 0000000000:48 0
+UBX 1:neptune.com@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{669236a1-46c2-4a2c-bdcc-cf0dca56aa10}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{669236a1-46c2-4a2c-bdcc-cf0dca56aa10}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:toastymicrowave@discord.com ToastyMicrowave 0000000000:48 0
+UBX 1:toastymicrowave@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{cd8969b8-ffe0-4fee-8d2e-c44fc7a423e1}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{cd8969b8-ffe0-4fee-8d2e-c44fc7a423e1}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:ryzenaiko@discord.com RyzenAiko 0000000000:48 0
+UBX 1:ryzenaiko@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{b83878ff-cd79-4b09-84a6-f64bd1c0557e}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{b83878ff-cd79-4b09-84a6-f64bd1c0557e}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:karlstir@discord.com karlstir 0000000000:48 0
+UBX 1:karlstir@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{812d6e94-62a4-411f-a782-69426c1cae51}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{812d6e94-62a4-411f-a782-69426c1cae51}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:spacewalkerreal@discord.com RealSpaceWalker 0000000000:48 0
+UBX 1:spacewalkerreal@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{6b54e621-134a-4000-8b24-d8f818f9f763}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{6b54e621-134a-4000-8b24-d8f818f9f763}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:tidalwavevr_@discord.com Tide 0000000000:48 0
+UBX 1:tidalwavevr_@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{2232c907-127f-49a8-9c66-78ae3b66b63c}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{2232c907-127f-49a8-9c66-78ae3b66b63c}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:brawllux@discord.com Brawllux 0000000000:48 0
+UBX 1:brawllux@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{058beed3-6777-4787-be7e-1f1b19bd85df}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{058beed3-6777-4787-be7e-1f1b19bd85df}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:rick_r1ck@discord.com rick 0000000000:48 0
+UBX 1:rick_r1ck@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{04fe2a4f-659d-4c74-ae4b-c3be36403cf2}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{04fe2a4f-659d-4c74-ae4b-c3be36403cf2}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:kradek@discord.com kradek 0000000000:48 0
+UBX 1:kradek@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{7ffbdba3-dbc2-427d-8b8f-2d680ecebbca}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{7ffbdba3-dbc2-427d-8b8f-2d680ecebbca}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:anycreaturemorph@discord.com AnyCreatureMorph 0000000000:48 0
+UBX 1:anycreaturemorph@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{b931cb98-2887-4b3e-962f-7a50d00df42c}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{b931cb98-2887-4b3e-962f-7a50d00df42c}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:greenlobster640@discord.com Lobster 0000000000:48 0
+UBX 1:greenlobster640@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{90c5e982-22c2-4a0c-ad00-958e36b18d20}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{90c5e982-22c2-4a0c-ad00-958e36b18d20}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:midiscrazy@discord.com Mid 0000000000:48 0
+UBX 1:midiscrazy@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{f5660794-9449-4fe2-9d6a-7b2fe2ca96c4}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{f5660794-9449-4fe2-9d6a-7b2fe2ca96c4}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:windows_xp_professional@discord.com Windows%20XP 0000000000:48 0
+UBX 1:windows_xp_professional@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{98c7b37c-8acf-4742-a893-de603f82c76a}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{98c7b37c-8acf-4742-a893-de603f82c76a}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:smolshibez@discord.com SmolShibez 0000000000:48 0
+UBX 1:smolshibez@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{b994ce3f-806b-4179-ba81-e3c091f40ce9}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{b994ce3f-806b-4179-ba81-e3c091f40ce9}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:averymadness@discord.com AveryMadness 0000000000:48 0
+UBX 1:averymadness@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{90989822-7f87-4003-9313-5e52cab786e5}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{90989822-7f87-4003-9313-5e52cab786e5}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:bandsnracks@discord.com shady 0000000000:48 0
+UBX 1:bandsnracks@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{82a86952-bc17-4922-bf7d-a669b1292038}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{82a86952-bc17-4922-bf7d-a669b1292038}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:aniram._@discord.com marinara%20sauce 0000000000:48 0
+UBX 1:aniram._@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{bbc6234f-4040-4f79-b647-0a109bbc9aa1}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{bbc6234f-4040-4f79-b647-0a109bbc9aa1}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:saturnix54@discord.com kazutan 0000000000:48 0
+UBX 1:saturnix54@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{cbb8b27c-b9c1-45aa-9fe0-dad0edae5ad6}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{cbb8b27c-b9c1-45aa-9fe0-dad0edae5ad6}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:coffeerival@discord.com Ben 0000000000:48 0
+UBX 1:coffeerival@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{5ba08964-3bd1-46f3-84c4-e7f298b11124}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{5ba08964-3bd1-46f3-84c4-e7f298b11124}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:bobbuscus@discord.com bobba 0000000000:48 0
+UBX 1:bobbuscus@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{7b740897-176b-48c1-a0f1-26cd0195646e}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{7b740897-176b-48c1-a0f1-26cd0195646e}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:angelbruni@discord.com angelbruni 0000000000:48 0
+UBX 1:angelbruni@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{c5a66f64-d453-4a1c-9349-fa3f21045ddc}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{c5a66f64-d453-4a1c-9349-fa3f21045ddc}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:christierd.@discord.com ,andy 0000000000:48 0
+UBX 1:christierd.@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{06747132-940f-464b-8f68-ea714c946de4}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{06747132-940f-464b-8f68-ea714c946de4}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:simonhxd@discord.com simon 0000000000:48 0
+UBX 1:simonhxd@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{837138cd-bfe4-46aa-bd9e-30e3278c9ca3}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{837138cd-bfe4-46aa-bd9e-30e3278c9ca3}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:thevhsanddvrking@discord.com Pinkie%20Pie 0000000000:48 0
+UBX 1:thevhsanddvrking@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{2a9c21ac-76e3-43de-9019-4cdb1f9dc019}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{2a9c21ac-76e3-43de-9019-4cdb1f9dc019}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:myadeleines@discord.com Myadeleines 0000000000:48 0
+UBX 1:myadeleines@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{b6f23f46-634b-4a9e-b936-9d798a0738f0}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{b6f23f46-634b-4a9e-b936-9d798a0738f0}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:banesrb@discord.com BaneSRB 0000000000:48 0
+UBX 1:banesrb@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{9389cb78-62c0-4684-9e5a-178f9f142e1c}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{9389cb78-62c0-4684-9e5a-178f9f142e1c}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:agostino.@discord.com Agostino 0000000000:48 0
+UBX 1:agostino.@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{75dfd8e9-424a-4668-92ad-d9e931e510a6}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{75dfd8e9-424a-4668-92ad-d9e931e510a6}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:spaghettiiq@discord.com -SptQ- 0000000000:48 0
+UBX 1:spaghettiiq@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{37603afb-2a25-4bde-b485-19e582e3b601}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{37603afb-2a25-4bde-b485-19e582e3b601}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:666mph@discord.com Toyota%20Prius 0000000000:48 0
+UBX 1:666mph@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{29cc34d0-0e5b-4014-87db-ecd641866737}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{29cc34d0-0e5b-4014-87db-ecd641866737}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:dolltasy@discord.com dolltasy 0000000000:48 0
+UBX 1:dolltasy@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{b02b58c9-ea61-41ef-b95e-fd608d556667}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{b02b58c9-ea61-41ef-b95e-fd608d556667}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:addlcfan@discord.com NirvanaGH 0000000000:48 0
+UBX 1:addlcfan@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{744b0311-bed5-4209-b3dd-5b3000cff42b}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{744b0311-bed5-4209-b3dd-5b3000cff42b}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:hendriks.@discord.com Hendriks 0000000000:48 0
+UBX 1:hendriks.@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{2c697870-23f8-4858-a68d-c81b8ea58145}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{2c697870-23f8-4858-a68d-c81b8ea58145}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:talwat@discord.com Talwat 0000000000:48 0
+UBX 1:talwat@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{c5d56195-8e6f-409b-a7f5-c15c516e8671}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{c5d56195-8e6f-409b-a7f5-c15c516e8671}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:linnware@discord.com four 0000000000:48 0
+UBX 1:linnware@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{e474135f-978a-4c3f-88ee-6bbd0cebeeb0}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{e474135f-978a-4c3f-88ee-6bbd0cebeeb0}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:jadxishere@discord.com jdx 0000000000:48 0
+UBX 1:jadxishere@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{1954119c-6106-4280-93e0-7ac5eaa68e41}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{1954119c-6106-4280-93e0-7ac5eaa68e41}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:dorsalfins@discord.com Rotes! 0000000000:48 0
+UBX 1:dorsalfins@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{a9dc9eb1-36e1-4b99-83ec-aa6b9f4b60f9}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{a9dc9eb1-36e1-4b99-83ec-aa6b9f4b60f9}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:duck8330@discord.com duck 0000000000:48 0
+UBX 1:duck8330@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{8dc694f9-b588-4327-a4e9-40538f3aae35}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{8dc694f9-b588-4327-a4e9-40538f3aae35}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:ah9631@discord.com CrewCommanderL 0000000000:48 0
+UBX 1:ah9631@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{d4ccf5ce-bebe-423c-92fd-3ac301332865}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{d4ccf5ce-bebe-423c-92fd-3ac301332865}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:nativeshades@discord.com nativeshades 0000000000:48 0
+UBX 1:nativeshades@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{b6c0f6d7-7c06-4fc3-9eea-5f472721a025}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{b6c0f6d7-7c06-4fc3-9eea-5f472721a025}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:atinycactus@discord.com a%20tiny%20cactus%20♡ 0000000000:48 0
+UBX 1:atinycactus@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{c027ce85-00a5-4c22-bbef-c8fa5f58e399}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{c027ce85-00a5-4c22-bbef-c8fa5f58e399}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:realminator@discord.com Realmy 0000000000:48 0
+UBX 1:realminator@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{c60b8c0e-9ae4-4d90-b9b6-261be40e0159}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{c60b8c0e-9ae4-4d90-b9b6-261be40e0159}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:lush16@discord.com lush16 0000000000:48 0
+UBX 1:lush16@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{ec530933-8731-4645-9a05-62af80d752d1}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{ec530933-8731-4645-9a05-62af80d752d1}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:levi_nz@discord.com Levi 0000000000:48 0
+UBX 1:levi_nz@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{194477d9-eebc-4214-abfd-0c6c92a83556}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{194477d9-eebc-4214-abfd-0c6c92a83556}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:bunnikaitlyn@discord.com Kaitlyn 0000000000:48 0
+UBX 1:bunnikaitlyn@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{6d6fa626-f00a-44cf-8c8b-e7e1cfe75dbb}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{6d6fa626-f00a-44cf-8c8b-e7e1cfe75dbb}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:overworldhuman@discord.com O҉v҉e҉r҉w҉o҉r҉l҉d҉h҉u҉m҉a҉n҉ 0000000000:48 0
+UBX 1:overworldhuman@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{910a8c79-38ab-465b-a3da-024369396028}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{910a8c79-38ab-465b-a3da-024369396028}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:arecarec@discord.com arec 0000000000:48 0
+UBX 1:arecarec@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{12cdb7a7-97db-43f7-a944-32253c9b81bf}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{12cdb7a7-97db-43f7-a944-32253c9b81bf}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:mitchelgatzke@discord.com Mitchel%20Gatzke 0000000000:48 0
+UBX 1:mitchelgatzke@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{4d169ea8-7b7e-4a78-9829-3c6c475d8915}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{4d169ea8-7b7e-4a78-9829-3c6c475d8915}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:real2two@discord.com Two 0000000000:48 0
+UBX 1:real2two@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{ed8fb7a7-1d56-4180-8f71-0d1b12bbfb26}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{ed8fb7a7-1d56-4180-8f71-0d1b12bbfb26}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:jollyjekyll@discord.com 🐟🖱%20𝓙𝓮𝓴𝔂𝓵𝓵%20🌊📂 0000000000:48 0
+UBX 1:jollyjekyll@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{d4cfbe1a-bc17-436a-8260-673f185d8a5c}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{d4cfbe1a-bc17-436a-8260-673f185d8a5c}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:goosium@discord.com goose 0000000000:48 0
+UBX 1:goosium@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{e292f4b0-91d7-4657-9fe5-8895986c9e4c}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{e292f4b0-91d7-4657-9fe5-8895986c9e4c}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:mcmistrzyt@discord.com mc 0000000000:48 0
+UBX 1:mcmistrzyt@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{a8bfe735-a6b1-4828-ae89-4035ab623fed}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{a8bfe735-a6b1-4828-ae89-4035ab623fed}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:squareshover@discord.com thea 0000000000:48 0
+UBX 1:squareshover@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{7d8edbde-a31d-48f0-a417-2d1ebd675649}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{7d8edbde-a31d-48f0-a417-2d1ebd675649}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:absolutespacehead@discord.com absoluteSpacehead 0000000000:48 0
+UBX 1:absolutespacehead@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{f5798c2a-78d6-4878-ae78-5d5c827a10df}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{f5798c2a-78d6-4878-ae78-5d5c827a10df}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:nweowastaken@discord.com Nwstk 0000000000:48 0
+UBX 1:nweowastaken@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{7e419548-a2f6-4b84-a0ec-4a372cfa923d}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{7e419548-a2f6-4b84-a0ec-4a372cfa923d}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>
+
+
+NLN NLN 1:gboi54@discord.com G-San 0000000000:48 0
+UBX 1:gboi54@discord.com 319
+<Data><PSM></PSM><CurrentMedia></CurrentMedia><MachineGuid>{f1914fa6-ee41-43f2-8b54-2a206042f06c}</MachineGuid><DDP></DDP><SignatureSound></SignatureSound><Scene></Scene><ColorScheme></ColorScheme><EndpointData id="{f1914fa6-ee41-43f2-8b54-2a206042f06c}"><Capabilities>2788999212:48</Capabilities></EndpointData></Data>

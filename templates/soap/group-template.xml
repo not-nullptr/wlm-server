@@ -1,0 +1,16 @@
+<Group>
+    <groupId>{%1}</groupId>
+    <groupInfo>
+        <annotations>
+            {%2}
+        </annotations>
+        <groupType>c8529ce2-6ead-434d-881f-341e17db3ff8</groupType>
+        <name>{%3}</name>
+        <IsNotMobileVisible>false</IsNotMobileVisible>
+        <IsPrivate>false</IsPrivate>
+        <IsFavorite>false</IsFavorite>
+    </groupInfo>
+    <propertiesChanged />
+    <fDeleted>false</fDeleted>
+    <lastChange>2024-02-04T13:58:21Z</lastChange>
+</Group>

@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import { MSNStatus, Token } from "../types/User";
 import { readFileSync } from "fs";
 import { Activity, FeedVideo } from "../types/REST";
-import { Contact } from "../types/Soap";
+import { Contact, Group } from "../types/Soap";
 import {
 	APIUser,
 	GatewayDispatchEvents,
@@ -185,8 +185,8 @@ export class MSNUtils {
 							}
 							case "READY_SUPPLEMENTAL" as any: {
 								this.readyData = {
-									...this.readyData,
 									...dispatchData.d,
+									...this.readyData,
 								} as any;
 								resolve();
 								break;
@@ -338,6 +338,13 @@ export function createContact(contact: Contact) {
 		<IsPrivate>${contact.contactInfo.IsPrivate}</IsPrivate>
 		<Gender>${contact.contactInfo.Gender}</Gender>
 		<TimeZone>${contact.contactInfo.TimeZone}</TimeZone>
+		${
+			contact.contactInfo.groupIds
+				? `<groupIds>
+			${contact.contactInfo.groupIds.map((id) => `<guid>${id}</guid>`).join("\n")}
+		</groupIds>`
+				: ``
+		}
 	</contactInfo>
 	<propertiesChanged>${contact.propertiesChanged}</propertiesChanged>
 	<fDeleted>${contact.fDeleted}</fDeleted>
@@ -345,11 +352,34 @@ export function createContact(contact: Contact) {
 </Contact>`;
 }
 
-export function generateABFindContactsPagedXML(contacts: Contact[]) {
+export function createGroup(group: Group) {
+	let template = readFileSync("templates/soap/group-template.xml").toString();
+	template = template.replaceAll("{%1}", group.groupId);
+	const annotations = Object.entries(group.groupInfo.annotations).map(
+		([key, value]) => `<Annotation>
+	<Name>${key}</Name>
+	<Value>${value}</Value>
+</Annotation>`,
+	);
+	template = template
+		.replaceAll(
+			"{%2}",
+			annotations.join("\n") +
+				"<Annotation><Name>MSN.IM.Display</Name><Value>1</Value></Annotation>",
+		)
+		.replaceAll("{%3}", group.groupInfo.name);
+	return template;
+}
+
+export function generateABFindContactsPagedXML(
+	groups: Group[],
+	contacts: Contact[],
+) {
 	const template = readFileSync("templates/soap/ABFindContactsPaged.xml");
 	return template
 		.toString()
-		.replaceAll("{%1}", contacts.map(createContact).join("\n"));
+		.replaceAll("{%1}", groups.map(createGroup).join("\n"))
+		.replaceAll("{%2}", contacts.map(createContact).join("\n"));
 }
 
 export function generateFeedVideo(video: FeedVideo) {
